@@ -29,7 +29,7 @@ export default {
     }
   },
   created: function () {
-    // this.fetchData()
+    this.fetchData()
   },
   mounted () {
   },
@@ -37,6 +37,14 @@ export default {
     fetchData: function () {
       // var self = this
       let accountAPI = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/malifaux?api_key=RGAPI-3065b5ee-27b9-45bf-bf65-90a7386bc5e7'
+
+      this.axios.get(accountAPI)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       // $.getJSON(accountAPI, function (data) {
       //   self.accountByName = data.data
       //   console.log(self.accountByName)
