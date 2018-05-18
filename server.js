@@ -3,6 +3,8 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       cors = require('cors'),
       mongoose = require('mongoose');
+      request = require('request');
+      async = require('async');
       //missing config for db
       summonerRoutes = require('./expressRoutes/summonerRoutes');
 
@@ -14,6 +16,35 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use('./summoners', summonerRoutes);
+
+app.get('/', (req, res) => {
+  let data = {};
+  let api_key = '';
+  let name = '';
+  let URL = '';
+
+  async.waterfall([
+    (callback) => {
+      request(URL, (err, response, body) => {
+        if (!err & response.statusCode === 200) {
+          var json = JSON.parse(body);
+          data.id = json[name].id;
+          data.name = json[name].name;
+          callback(null, data);
+        } else {
+          console.log(err);
+        }
+      })
+    }
+  ],
+(err, data) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+})
+});
+
 const port = process.env.PORT || 4000;
 
 const server = app.listen(function(){
