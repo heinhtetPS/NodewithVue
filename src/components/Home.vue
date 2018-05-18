@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import $ from 'jquery'
+import axios from 'axios';
 export default {
   name: 'Home',
   data () {
@@ -34,33 +34,15 @@ export default {
   mounted () {
   },
   methods: {
-    fetchData: function () {
-      // var self = this
-      let accountAPI = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/malifaux?api_key=RGAPI-3065b5ee-27b9-45bf-bf65-90a7386bc5e7'
-
-      this.axios.get(accountAPI)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      // $.getJSON(accountAPI, function (data) {
-      //   self.accountByName = data.data
-      //   console.log(self.accountByName)
-      // })
-//       $.ajax({
-//         url: accountAPI,
-//     // The name of the callback parameter, as specified by the YQL service
-//         jsonp: 'callback',
-//     // Tell jQuery we're expecting JSONP
-//         dataType: 'jsonp',
-//     },
-//     // Work with the response
-//     function( response ) {
-//         console.log( response ); // server response
-//     }
-// );
+    fetchData: () => {
+      let staticURL = 'http://localhost:4000/'
+      axios.get(staticURL)
+      .then( (response) => {
+        console.log(response);
+      })
+      .catch( (error) => {
+        console.log(error);
+      });
     }
   }
 }

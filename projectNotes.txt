@@ -1,7 +1,9 @@
 Done
 - Setup similar Vue framework
 - Setup an Express server
+- Express server is now returning the correct data
+
 
 Todo
-- Use express Server to retrieve lol API info
-- give that info to the Vue display section 
+- Do more research to make a proper app.get 
+- give that info to the Vue display section

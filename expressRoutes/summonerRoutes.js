@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-var itemRoutes = express.Router();
+var summonerRoutes = express.Router();
 
 var Summoner = require('../models/Summoner');
 

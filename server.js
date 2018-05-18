@@ -6,7 +6,7 @@ const express = require('express'),
       request = require('request');
       async = require('async');
       //missing config for db
-      summonerRoutes = require('./expressRoutes/summonerRoutes');
+      summonerRoutes = require('./expressRoutes/summonerRoutes.js');
 
 mongoose.Promise = global.Promise;
 //missing mongoose.connect with DB
@@ -17,36 +17,42 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('./summoners', summonerRoutes);
 
-app.get('/', (req, res) => {
-  let data = {};
-  let api_key = '';
-  let name = '';
-  let URL = '';
+// app.get('/', (req, res) => {
+//   let data = {yo: "hello"};
+//   let api_key = '';
+//   let name = '';
+//   let URL = '';
+//
+//   async.waterfall([
+//     (callback) => {
+//       request(URL, (err, response, body) => {
+//         if (!err & response.statusCode === 200) {
+//           var json = JSON.parse(body);
+//           data.id = json[name].id;
+//           data.name = json[name].name;
+//           callback(null, data);
+//         } else {
+//           console.log(err);
+//         }
+//       })
+//     }
+//   ],
+// (err, data) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//
+//   res.send(data);
+// })
+// });
 
-  async.waterfall([
-    (callback) => {
-      request(URL, (err, response, body) => {
-        if (!err & response.statusCode === 200) {
-          var json = JSON.parse(body);
-          data.id = json[name].id;
-          data.name = json[name].name;
-          callback(null, data);
-        } else {
-          console.log(err);
-        }
-      })
-    }
-  ],
-(err, data) => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-})
+app.get('/', (req, res) => {
+  res.send("YOYOYO");
 });
 
 const port = process.env.PORT || 4000;
 
-const server = app.listen(function(){
+app.listen(port, () => {
   console.log('Listening on port ' + port);
 });
