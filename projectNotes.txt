@@ -5,5 +5,41 @@ Done
 
 
 Todo
-- Do more research to make a proper app.get 
+- Do more research to make a proper app.get
 - give that info to the Vue display section
+
+
+App.get
+- Now it is retrieving it correctly, no more mistakes with the syntax
+- 2 missing things: api_key and name
+- API key needs to become an ENV variable, find out about this
+- Name needs to retrieve from the frontend OR put it as malifaux for temp
+
+
+----------------------
+
+https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/malifaux?api_key={key}
+produces:
+{
+id: 318944,
+accountId: 345778,
+name: "malifaux",
+profileIconId: 539,
+revisionDate: 1515748743000,
+summonerLevel: 47
+}
+
+
+match history by acct number:
+https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/345778?api_key={current_api_key}
+get accountID by summoner name
+https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/malifaux?api_key={current_api_key}
+returns:
+{
+  id: 318944,
+  accountId: 345778,
+  name: "malifaux",
+  profileIconId: 3440,
+  revisionDate: 1526025195000,
+  summonerLevel: 62
+}
