@@ -19,7 +19,7 @@ app.use('./summoners', summonerRoutes);
 
 app.get('/searchbyname', (req, res) => {
   let data = {};
-  let api_key = 'RGAPI-f5b59443-5aaf-422e-8939-d806472366de';
+  let api_key = '';
   let name = 'malifaux';
   let URL = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + name + '?api_key=' + api_key;
 
