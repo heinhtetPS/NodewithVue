@@ -17,6 +17,7 @@ App.get
 
 
 ----------------------
+2 steps: first get account# by name, then match history by acct number
 
 https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/malifaux?api_key={key}
 produces:
@@ -32,14 +33,3 @@ summonerLevel: 47
 
 match history by acct number:
 https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/345778?api_key={current_api_key}
-get accountID by summoner name
-https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/malifaux?api_key={current_api_key}
-returns:
-{
-  id: 318944,
-  accountId: 345778,
-  name: "malifaux",
-  profileIconId: 3440,
-  revisionDate: 1526025195000,
-  summonerLevel: 62
-}

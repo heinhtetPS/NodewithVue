@@ -7,38 +7,34 @@
         <li>About</li>
       </ul>
     </nav>
-    <div class="form-container">
-      <label for="">Summoner Name:</label>
-      <input type="text" name="" value="">
-      <label for="">Server:</label>
-      <select name="server">
-        <option value="NA">NA</option>
-      </select>
-    </div>
-
+    <mainForm />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import mainForm from './mainForm.vue';
 export default {
   name: 'Home',
+  components: {
+   mainForm
+ },
   data () {
     return {
 
     }
   },
   created: function () {
-    this.fetchData()
+    // this.fetchData()
   },
   mounted () {
   },
   methods: {
     fetchData: () => {
-      let staticURL = 'http://localhost:4000/'
+      let staticURL = 'http://localhost:4000/searchbyname'
       axios.get(staticURL)
       .then( (response) => {
-        console.log(response);
+        console.log(response.data);
       })
       .catch( (error) => {
         console.log(error);
