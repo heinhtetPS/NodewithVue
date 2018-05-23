@@ -5,6 +5,7 @@ const express = require('express'),
       mongoose = require('mongoose');
       request = require('request');
       async = require('async');
+      extend = require('extend');
       //missing config for db
       summonerRoutes = require('./expressRoutes/summonerRoutes.js');
 
@@ -17,26 +18,45 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('./summoners', summonerRoutes);
 
-app.get('/searchbyname', (req, res) => {
+app.get('/search', (req, res) => {
   let data = {};
-  let api_key = '';
+  let finalData = {};
+  let api_key = 'RGAPI-36d29bf0-d3a1-4952-86c8-9c20ccf6ff1c';
   let name = 'malifaux';
+  let accountId = '';
   let URL = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + name + '?api_key=' + api_key;
+  let URL2 = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + accountId + '?api_key=' + api_key;
 
   async.waterfall([
+
     (callback) => {
       request(URL, (err, response, body) => {
         if (!err && response.statusCode === 200) {
           var json = JSON.parse(body);
           data = json;
-          // data.id = json[name].id;
-          // data.name = json[name].name;
+
+
           callback(null, data);
         } else {
           console.log(err);
         }
       })
-    }
+    },
+
+    (obj, callback) => {
+      accountId = obj.accountId;
+      URL2 = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + accountId + '?api_key=' + api_key;
+      request(URL2, (err, response, body) => {
+      if (!err && response.statusCode === 200) {
+        var json = JSON.parse(body);
+        extend(finalData, json, data);
+        console.log(finalData);
+        callback(null, data);
+      } else {
+        console.log(err);
+      }
+    })
+  }
   ],
 (err, data) => {
   if (err) {
@@ -44,7 +64,7 @@ app.get('/searchbyname', (req, res) => {
     return;
   }
 
-  res.send(data);
+  res.send(finalData);
 })
 });
 
