@@ -3,21 +3,24 @@
     <nav class="top-nav">
       <ul class="nav-links">
         <li>Home</li>
-        <!-- <li><router-link to="Champs">Champion List</router-link></li> -->
+        <li>Champions</li>
         <li>About</li>
       </ul>
     </nav>
     <mainForm />
+    <matchHistory />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import mainForm from './mainForm.vue';
+import matchHistory from './matchHistory.vue';
 export default {
   name: 'Home',
   components: {
-   mainForm
+   mainForm,
+   matchHistory
  },
   data () {
     return {

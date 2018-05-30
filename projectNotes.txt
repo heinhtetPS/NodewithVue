@@ -22,6 +22,9 @@ VUE FORM
 - Problem: Where to put fetchdata()??? In the main Home component? or inside the Form component?
 - After data fetch, it has to create a new Vue and populate it with the data from server
 
+matchHistory
+- Created 1st draft for match history scroll and single match history layout
+
 
 ----------------------
 Fetch steps
