@@ -25,6 +25,24 @@ VUE FORM
 matchHistory
 - Created 1st draft for match history scroll and single match history layout
 
+MVPS
+- Can search for any account in NA: Retrieves the correct summoner data from LoL api
+- Hides the API key for security and compliance
+- Populates frontend with recently played games
+-
+
+Tues - Populate containers with test data, fix frontend stuff
+Wed - Finally understand how to handle inputs and forms in vue and how to send to server
+Thurs - Put together the two ends, do testing, polish the games list
+Fri - Complete MVPs and polish. Make sure design is responsive. Edit resume and include. Include Vue and Node on portfolio.  
+
+Extras
+- Expand to EU and other servers
+- Apply analytics to the retrieved data:
+  - Starting with gold/min as the first stat
+      - average g/m, best g/m, worst g/m, g/m consistency (std deviation), g/m by role or champ
+      - average kda, best kda, worst kda, kda consisdency (std deviation), kda by role or champ
+
 
 ----------------------
 Fetch steps
