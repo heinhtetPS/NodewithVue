@@ -16,6 +16,8 @@ App.get
 - Name needs to retrieve from the frontend OR put it as malifaux for temp
 - GOT IT! Now the waterfall retrieves from 2 different endpoints and combines into 1 large JSON object
 keys: matches, startIndex, endIndex, totalGames, id, accountId, name, profileIconId, revisionDate, summonerLevel
+- Need a way to know when the API key is expired. For now, it just fails silently, making it look like the entire thing doesnt work.
+
 
 VUE FORM
 - created text field to return name to search, select field to choose server
