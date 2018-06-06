@@ -35,7 +35,7 @@ export default {
         },
         {
           gameId: 2787522914,
-          champion: 142,
+          champion: 77,
           queue: 420,
           timestamp: 1523083076236,
           role: "DUO_SUPPORT",

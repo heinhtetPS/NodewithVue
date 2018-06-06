@@ -34,7 +34,7 @@ MVPS
 Tues - Populate containers with test data, fix frontend stuff
 Wed - Finally understand how to handle inputs and forms in vue and how to send to server
 Thurs - Put together the two ends, do testing, polish the games list
-Fri - Complete MVPs and polish. Make sure design is responsive. Edit resume and include. Include Vue and Node on portfolio.  
+Fri - Complete MVPs and polish. Make sure design is responsive. Edit resume and include. Include Vue and Node on portfolio.
 
 Extras
 - Expand to EU and other servers
@@ -163,6 +163,25 @@ produces 1 JSON obj with matches, startIndex, endIndex, totalGames. Below is mat
 {"platformId":"NA1","gameId":2758822033,"champion":107,"queue":450,"season":11,"timestamp":1523170090964,"role":"DUO_SUPPORT","lane":"NONE"},
 {"platformId":"NA1","gameId":2757845267,"champion":77,"queue":450,"season":11,"timestamp":1523083076236,"role":"DUO_SUPPORT","lane":"NONE"}
 ]
+
+
+match info by match ID:
+https://na1.api.riotgames.com/lol/match/v3/matches/2787550758?api_key={current_api_key}
+{
+gameId: 2787550758,
+platformId: "NA1",
+gameCreation: 1526881690983,
+gameDuration: 1174,
+queueId: 450,
+mapId: 12,
+seasonId: 11,
+gameVersion: "8.10.229.7328",
+gameMode: "ARAM",
+gameType: "MATCHED_GAME",
+teams: [],
+participants: [],
+participantIdentities: []
+}
 
 Each box of an individual game will pull up its own game stats using gameid
 timestamp can be used to get a date or X days ago
