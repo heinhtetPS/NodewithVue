@@ -37,7 +37,7 @@ export default {
           gameId: 2787522914,
           champion: 142,
           queue: 420,
-          timestamp: 1526879131340,
+          timestamp: 1523083076236,
           role: "DUO_SUPPORT",
           lane: "BOTTOM"
         }
