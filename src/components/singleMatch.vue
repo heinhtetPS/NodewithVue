@@ -6,7 +6,7 @@
         <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/Aatrox.png"></img>
       </div>
       <div class="mhl-column2">
-        <h3>{{ singleMatch.queue }}</h3>
+        <h3>{{ convertQueueID(singleMatch.queue) }}</h3>
         <div class="spells-and-runes">
           <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/SummonerFlash.png"></img>
           <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/SummonerFlash.png"></img>
@@ -63,6 +63,18 @@ export default {
       let hour = date.getHours();
       let mins = date.getMinutes();
       return hour + ":" + mins;
+    },
+    convertQueueID: (id) => {
+      switch(id) {
+        case 420:
+          return "5v5 Ranked Solo";
+          break;
+        case 450:
+          return "5v5 ARAM";
+          break;
+        default:
+          return "Unknown Queue Type";
+      }
     }
   }
 }
