@@ -8,7 +8,7 @@
       </ul>
     </nav>
     <mainForm />
-    <matchHistory />
+    <matchHistory v-bind:matches="matches"></matchHistory>
   </div>
 </template>
 
@@ -24,7 +24,24 @@ export default {
  },
   data () {
     return {
-
+      matches: [
+        {
+          gameId: 2787550758,
+          champion: 163,
+          queue: 450,
+          timestamp: 1526881690983,
+          role: "DUO_CARRY",
+          lane: "BOTTOM"
+        },
+        {
+          gameId: 2787522914,
+          champion: 142,
+          queue: 420,
+          timestamp: 1526879131340,
+          role: "DUO_SUPPORT",
+          lane: "BOTTOM"
+        }
+      ]
     }
   },
   created: function () {
