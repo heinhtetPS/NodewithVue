@@ -10,9 +10,9 @@ Todo
 
 
 App.get
-- Now it is retrieving it correctly, no more mistakes with the syntax
-- 2 missing things: api_key and name
-- API key needs to become an ENV variable, find out about this!!
+- Now it is retrieving it correctly, no more mistakes with the syntax DONE
+- 2 missing things: api_key and name DONE
+- API key needs to become an ENV variable, find out about this!! DONE!
 - Name needs to retrieve from the frontend OR put it as malifaux for temp
 - GOT IT! Now the waterfall retrieves from 2 different endpoints and combines into 1 large JSON object
 keys: matches, startIndex, endIndex, totalGames, id, accountId, name, profileIconId, revisionDate, summonerLevel

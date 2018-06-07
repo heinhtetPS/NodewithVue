@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('./summoners', summonerRoutes);
 
-app.get('/search', (req, res) => {
+app.get('/searchbyname', (req, res) => {
   let data = {};
   let finalData = {};
   let api_key = process.env.API_KEY;
@@ -65,6 +65,24 @@ app.get('/search', (req, res) => {
 
   res.send(finalData);
 })
+});
+
+app.get('/match', (req, res) => {
+  let matchData = {};
+  let api_key = process.env.API_KEY;
+  let gameID = 2787550758;
+  let URL = 'https://na1.api.riotgames.com/lol/match/v3/matches/' + gameID + '?api_key=' + api_key;
+
+  request(URL, (err, response, body) => {
+    if (!err && response.statusCode === 200) {
+      var json = JSON.parse(body);
+      matchData = json;
+
+    } else {
+      console.log(err);
+    }
+    res.send(matchData);
+  });
 });
 
 // app.get('/', (req, res) => {

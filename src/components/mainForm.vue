@@ -20,7 +20,7 @@
 export default {
   data () {
     return {
-      summonerName: 'Dyrus',
+      summonerName: 'malifaux',
       server: "NA"
     }
   }
