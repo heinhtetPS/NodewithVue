@@ -23,6 +23,7 @@ app.get('/searchbyname', (req, res) => {
   let data = {};
   let finalData = {};
   let api_key = process.env.API_KEY;
+  //next: slice after ? to get name or access req params 
   let name = 'malifaux';
   let accountId = '';
   let URL = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + name + '?api_key=' + api_key;

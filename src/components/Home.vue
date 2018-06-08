@@ -23,6 +23,7 @@ export default {
    matchHistory
  },
   data () {
+    //get this FROM the mainForm while passing it INTO matchHistory
     return {
       matches: [
         {

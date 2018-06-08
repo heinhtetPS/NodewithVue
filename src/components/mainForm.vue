@@ -27,9 +27,15 @@ export default {
     }
   },
   methods: {
-    fetchSummoner: () => {
-      let staticURL = 'http://localhost:4000/searchbyname'
-      axios.get(staticURL)
+    handleSubmit: function() {
+      this.fetchSummoner();
+    },
+    fetchSummoner: function() {
+      const staticURL = 'http://localhost:4000/searchbyname'
+      let summonerName = this.$data.summonerName;
+      let fullURL = staticURL + "?" + summonerName;
+      console.log(fullURL);
+      axios.get(fullURL)
       .then( (response) => {
         console.log(response.data);
       })
@@ -37,18 +43,18 @@ export default {
         console.log(error);
       });
     },
-    fetchMatch: () => {
-      let staticURL = 'http://localhost:4000/match'
-      axios.get(staticURL)
+    fetchMatch: function() {
+      const staticURL = 'http://localhost:4000/match'
+      let matchGameID = 2787550758;
+      let fullURL = staticURL + "?" + matchGameID;
+      console.log(fullURL);
+      axios.get(fullURL)
       .then( (response) => {
         console.log(response.data);
       })
       .catch( (error) => {
         console.log(error);
       });
-    },
-    handleSubmit: () => {
-      console.log("submitted");
     }
   }
 }

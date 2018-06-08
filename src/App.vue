@@ -8,6 +8,11 @@
     </div>
 </template>
 
+<script>
+    export default{
+    }
+</script>
+
 <style>
     .fade-enter-active, .fade-leave-active {
       transition: opacity .5s
@@ -16,9 +21,3 @@
       opacity: 0
     }
 </style>
-
-<script>
-
-    export default{
-    }
-</script>
