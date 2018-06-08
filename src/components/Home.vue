@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import axios from 'axios';
 import mainForm from './mainForm.vue';
 import matchHistory from './matchHistory.vue';
+
 export default {
   name: 'Home',
   components: {
@@ -50,16 +50,7 @@ export default {
   mounted () {
   },
   methods: {
-    fetchData: () => {
-      let staticURL = 'http://localhost:4000/searchbyname'
-      axios.get(staticURL)
-      .then( (response) => {
-        console.log(response.data);
-      })
-      .catch( (error) => {
-        console.log(error);
-      });
-    }
+
   }
 }
 </script>
