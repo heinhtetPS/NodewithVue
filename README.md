@@ -1,5 +1,19 @@
-WIP
-Retrieve LoL info with Node server and display with Vue.js
+### WORK IN PROGRESS
+
+## Objective
+Retrieve LoL info with Node server and display analytics
+
+## MVP Goals
+- User can input their Summoner Name to retrieve their recent match history (10-20 matches)
+- Deal with CORS restriction by retrieving info with Node server, and then display with Vue.js
+- Webapp is responsive to mobile, tablet and desktop
+
+## Additional Goals
+- Create at least one type of analytic process, derived from match history data:
+  - Gold/min or average KDA
+- Additional champ based analytics
+  - Mastery list
+  - Best gold or KDA / champ 
 
 
 Build Setup
