@@ -23,7 +23,7 @@ app.get('/searchbyname', (req, res) => {
   let data = {};
   let finalData = {};
   let api_key = process.env.API_KEY;
-  //next: slice after ? to get name or access req params 
+  //next: slice after ? to get name or access req params
   let name = 'malifaux';
   let accountId = '';
   let URL = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + name + '?api_key=' + api_key;
@@ -45,7 +45,7 @@ app.get('/searchbyname', (req, res) => {
 
     (obj, callback) => {
       accountId = obj.accountId;
-      URL2 = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + accountId + '?api_key=' + api_key;
+      URL2 = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + accountId + '?endIndex=20' + '&api_key=' + api_key;
       request(URL2, (err, response, body) => {
       if (!err && response.statusCode === 200) {
         var json = JSON.parse(body);

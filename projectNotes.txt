@@ -3,7 +3,6 @@ Done
 - Setup an Express server
 - Express server is now returning the correct data
 
-
 Todo
 - Do more research to make a proper app.get
 - give that info to the Vue display section
@@ -33,10 +32,11 @@ MVPS
 - Populates frontend with recently played games
 -
 
-Tues - Populate containers with test data, fix frontend stuff
-Wed - Finally understand how to handle inputs and forms in vue and how to send to server
-Thurs - Put together the two ends, do testing, polish the games list
-Fri - Complete MVPs and polish. Make sure design is responsive. Edit resume and include. Include Vue and Node on portfolio.
+Mon - work on including request in get. See the info populate on frontend
+Tues - chillax after interview/job fair
+Wed - Fix the other problem from Mon. If the throughput is ok, start working on css.
+
+
 
 Extras
 - Expand to EU and other servers
@@ -63,6 +63,7 @@ summonerLevel: 47
 match history by acct number:
 https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/345778?api_key={current_api_key}
 produces 1 JSON obj with matches, startIndex, endIndex, totalGames. Below is matches:
+can use ?endIndex=20 to limit amount
 [
 {"platformId":"NA1","gameId":2787550758,"champion":163,"queue":450,"season":11,"timestamp":1526881690983,"role":"DUO_SUPPORT","lane":"NONE"},
 {"platformId":"NA1","gameId":2787522914,"champion":142,"queue":420,"season":11,"timestamp":1526879131340,"role":"DUO_SUPPORT","lane":"BOTTOM"},
