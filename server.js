@@ -23,8 +23,8 @@ app.get('/searchbyname', (req, res) => {
   let data = {};
   let finalData = {};
   let api_key = process.env.API_KEY;
-  //next: slice after ? to get name or access req params
-  let name = 'malifaux';
+  //req.query accesses params that come after ?
+  let name = Object.keys(req.query)[0];
   let accountId = '';
   let URL = 'https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + name + '?api_key=' + api_key;
   let URL2 = 'https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + accountId + '?api_key=' + api_key;
@@ -86,8 +86,9 @@ app.get('/match', (req, res) => {
   });
 });
 
-// app.get('/', (req, res) => {
-//   res.send(process.env.API_KEY);
+// app.get('/searchbyname', (req, res) => {
+//   name = Object.keys(req.query)[0];
+//   res.send(name);
 // });
 
 const port = process.env.PORT || 4000;
