@@ -36,7 +36,7 @@ MVPS
 Mon - work on including request in get. See the info populate on frontend
 Tues - chillax after interview/job fair
 Wed - Fix the other problem from Mon. If the throughput is ok, start working on css.
-
+thurs - Look at home.vue and research passing async props  
 
 
 Extras

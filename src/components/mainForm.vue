@@ -9,9 +9,7 @@
         <option default value="NA">NA</option>
       </select>
       <button type="submit">Search</button><br />
-      <p><pre>data: {{$data}}</pre></p>
     </form>
-
   </div>
 
 </template>
@@ -34,7 +32,6 @@ export default {
       const staticURL = 'http://localhost:4000/searchbyname'
       let summonerName = this.$data.summonerName;
       let fullURL = staticURL + "?" + summonerName;
-      console.log(fullURL);
       axios.get(fullURL)
       .then( (response) => {
         console.log(response.data);
@@ -61,4 +58,5 @@ export default {
 </script>
 
 <style lang="css">
+
 </style>

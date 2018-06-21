@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="match-history-container">
+    <h1>RECENT MATCH HISTORY</h1>
     <singleMatch v-bind:singleMatch="match" v-for="match in matches" :key="match.gameId"></singleMatch>
   </div>
 </template>

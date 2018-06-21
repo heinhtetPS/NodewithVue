@@ -8,22 +8,29 @@
       </ul>
     </nav>
     <mainForm />
-    <matchHistory v-bind:matches="matches"></matchHistory>
+    <div class="bottom-container">
+      <profile class="profilebox" v-bind:data="data"></profile>
+        <matchHistory class="historybox" v-bind:matches="matches"></matchHistory>
+    </div>
   </div>
 </template>
 
 <script>
 import mainForm from './mainForm.vue';
 import matchHistory from './matchHistory.vue';
+import profile from './profile.vue';
 
 export default {
   name: 'Home',
   components: {
    mainForm,
-   matchHistory
+   matchHistory,
+   profile
  },
   data () {
     //get this FROM the mainForm while passing it INTO matchHistory
+    //get profile data FROM mainform and pass into profile
+    //additional profile data will come from fetch, extend the data
     return {
       matches: [
         {
@@ -77,16 +84,16 @@ a {
   background-color: black;
   color: white;
 }
-.d3-container {
-  width: 80%;
-  height: 600px;
-  background-color: gainsboro;
-  margin-left: 10%;
-  padding-top: 40px;
-  padding-bottom: 40px;
+
+.bottom-container {
+  display: flex;
 }
-.d3-container > img {
-  max-width: 100%;
-  max-height: 100%;
+
+.profilebox {
+  width: 40%;
+}
+
+.historybox {
+  width: 60%;
 }
 </style>
