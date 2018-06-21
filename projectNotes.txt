@@ -65,6 +65,11 @@ match history by acct number:
 https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/345778?api_key={current_api_key}
 produces 1 JSON obj with matches, startIndex, endIndex, totalGames. Below is matches:
 can use ?endIndex=20 to limit amount
+
+profile icons easy retrieval
+http://avatar.leagueoflegends.com/na/malifaux.png
+
+matches
 [
 {"platformId":"NA1","gameId":2787550758,"champion":163,"queue":450,"season":11,"timestamp":1526881690983,"role":"DUO_SUPPORT","lane":"NONE"},
 {"platformId":"NA1","gameId":2787522914,"champion":142,"queue":420,"season":11,"timestamp":1526879131340,"role":"DUO_SUPPORT","lane":"BOTTOM"},
