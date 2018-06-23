@@ -27,6 +27,7 @@ export default {
   methods: {
     handleSubmit: function() {
       this.fetchSummoner();
+      this.$emit('dataRetrieved', 'true');
     },
     fetchSummoner: function() {
       const staticURL = 'http://localhost:4000/searchbyname'
@@ -35,6 +36,7 @@ export default {
       axios.get(fullURL)
       .then( (response) => {
         console.log(response.data);
+
       })
       .catch( (error) => {
         console.log(error);

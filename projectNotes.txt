@@ -1,14 +1,17 @@
+MVPS
+- Can search for any account in NA: Retrieves the correct summoner data from LoL api
+- Hides the API key for security and compliance
+- Populates frontend with recently played games
+-
+
+
 Done
 - Setup similar Vue framework
 - Setup an Express server
 - Express server is now returning the correct data
+- Server can now retrieve 2 different things: profile data from name and matches from ID
 
-Todo
-- Do more research to make a proper app.get
-- give that info to the Vue display section
-
-
-App.get
+App.get (done)
 - Now it is retrieving it correctly, no more mistakes with the syntax DONE
 - 2 missing things: api_key and name DONE
 - API key needs to become an ENV variable, find out about this!! DONE!
@@ -19,24 +22,31 @@ keys: matches, startIndex, endIndex, totalGames, id, accountId, name, profileIco
 - Need a way to know when the API key is expired. For now, it just fails silently, making it look like the entire thing doesnt work.
 
 
-VUE FORM
+VUE MAIN FORM (done)
 - created text field to return name to search, select field to choose server
 - Problem: Where to put fetchdata()??? In the main Home component? or inside the Form component?
 - After data fetch, it has to create a new Vue and populate it with the data from server
 
 matchHistory
 - Created 1st draft for match history scroll and single match history layout
+- Need to receive props from bottomContent whenever it receives it from mainForm
 
-MVPS
-- Can search for any account in NA: Retrieves the correct summoner data from LoL api
-- Hides the API key for security and compliance
-- Populates frontend with recently played games
--
+
+bottomContent
+- created bottomContent in order to do conditional rendering with dataRetrieved
+- Current issues:
+  - v-if on the bottomContent template is not working despite show showing as false
+  - When mainForm is submitted, it needs to emit back to parent and change dataRetrieved property to TRUE
+  - when mainForm is submitted and data is retrieved, profileData needs to go to profile component and matches needs to go to matchHistory
+
+profileData
+- Need to receive props from bottomContent whenever it receives it from mainForm
+
 
 Mon - work on including request in get. See the info populate on frontend
 Tues - chillax after interview/job fair
 Wed - Fix the other problem from Mon. If the throughput is ok, start working on css.
-thurs - Look at home.vue and research passing async props  
+thurs - Look at home.vue and research passing async props
 
 
 Extras

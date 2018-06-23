@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="profile-container">
-    <h1>{{$data.summonerName}}</h1>
+    <h1>{{data}}</h1>
     <p>Summoner Level: 999</p>
     <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + 'malifaux' + '.png'"></img>
     <h2>Recently Played Champs</h2>

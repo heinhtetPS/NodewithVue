@@ -8,30 +8,27 @@
       </ul>
     </nav>
     <mainForm />
-    <div class="bottom-container">
-      <profile class="profilebox" v-bind:data="data"></profile>
-        <matchHistory class="historybox" v-bind:matches="matches"></matchHistory>
-    </div>
+    <bottomContent v-bind:show="dataRetrieved" v-bind:profile="profileData" v-bind:matches="matches"></bottomContent>
   </div>
 </template>
 
 <script>
 import mainForm from './mainForm.vue';
-import matchHistory from './matchHistory.vue';
-import profile from './profile.vue';
+import bottomContent from './bottomContent.vue';
 
 export default {
   name: 'Home',
   components: {
    mainForm,
-   matchHistory,
-   profile
+   bottomContent
  },
   data () {
     //get this FROM the mainForm while passing it INTO matchHistory
     //get profile data FROM mainform and pass into profile
     //additional profile data will come from fetch, extend the data
     return {
+      dataRetrieved: false,
+      profileData: 'malifaux',
       matches: [
         {
           gameId: 2787550758,
@@ -56,9 +53,6 @@ export default {
     // this.fetchData()
   },
   mounted () {
-  },
-  methods: {
-
   }
 }
 </script>
