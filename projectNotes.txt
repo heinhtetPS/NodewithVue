@@ -205,3 +205,14 @@ participantIdentities: []
 Each box of an individual game will pull up its own game stats using gameid
 timestamp can be used to get a date or X days ago
 champid can be used to get icon
+
+For emit problem:
+Try this:
+- Have fetchSummoner() return the data into a variable OR have it dump into mainForm's state. 
+- Then access that during handleSubmit and have it emit to Home
+-  example: methods: {
+    updatename: function() {
+      this.myname = "new name" ;
+      this.$emit("nameupdated", this.myname);
+    }
+  }
