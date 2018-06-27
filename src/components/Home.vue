@@ -5,10 +5,11 @@
         <li>Home</li>
         <li>Champions</li>
         <li>About</li>
+        <li>{{ dataState }}</li>
       </ul>
     </nav>
-    <mainForm />
-    <bottomContent v-bind:show="dataRetrieved" v-bind:profile="profileData" v-bind:matches="matches"></bottomContent>
+    <mainForm v-on:gotData="toggleDataRetrieved"/>
+    <bottomContent v-if="dataRetrieved" v-bind:profile="profileData" v-bind:matches="matches"></bottomContent>
   </div>
 </template>
 
@@ -29,6 +30,7 @@ export default {
     return {
       dataRetrieved: false,
       profileData: 'malifaux',
+      newstuff: '',
       matches: [
         {
           gameId: 2787550758,
@@ -49,10 +51,15 @@ export default {
       ]
     }
   },
-  created: function () {
-    // this.fetchData()
+  computed: {
+    dataState: function () {
+      return this.dataRetrieved;
+    }
   },
-  mounted () {
+  methods: {
+    toggleDataRetrieved: function () {
+      this.dataRetrieved = true;
+    }
   }
 }
 </script>

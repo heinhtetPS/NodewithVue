@@ -38,6 +38,9 @@ bottomContent
   - v-if on the bottomContent template is not working despite show showing as false
   - When mainForm is submitted, it needs to emit back to parent and change dataRetrieved property to TRUE
   - when mainForm is submitted and data is retrieved, profileData needs to go to profile component and matches needs to go to matchHistory
+- SOLVED emit problem by adding a listener to the Home component with v-on, triggering JS
+- SOLVED v-if problem by making dataRetrieved property into a computed property
+- ALSO: Be careful of using ()=> in vue methods. Generally it fails. 
 
 profileData
 - Need to receive props from bottomContent whenever it receives it from mainForm
@@ -208,7 +211,7 @@ champid can be used to get icon
 
 For emit problem:
 Try this:
-- Have fetchSummoner() return the data into a variable OR have it dump into mainForm's state. 
+- Have fetchSummoner() return the data into a variable OR have it dump into mainForm's state.
 - Then access that during handleSubmit and have it emit to Home
 -  example: methods: {
     updatename: function() {

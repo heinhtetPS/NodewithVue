@@ -26,8 +26,9 @@ export default {
   },
   methods: {
     handleSubmit: function() {
-      this.fetchSummoner();
-      this.$emit('dataRetrieved', 'true');
+      // this.fetchSummoner();
+      this.$emit("gotData");
+
     },
     fetchSummoner: function() {
       const staticURL = 'http://localhost:4000/searchbyname'
