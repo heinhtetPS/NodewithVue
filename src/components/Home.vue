@@ -5,7 +5,7 @@
         <li>Home</li>
         <li>Champions</li>
         <li>About</li>
-        <li>{{ dataState }}</li>
+        <li>{{ profileData }}</li>
       </ul>
     </nav>
     <mainForm v-on:gotData="toggleDataRetrieved"/>
@@ -29,8 +29,7 @@ export default {
     //additional profile data will come from fetch, extend the data
     return {
       dataRetrieved: false,
-      profileData: 'malifaux',
-      newstuff: '',
+      profileData: '',
       matches: [
         {
           gameId: 2787550758,

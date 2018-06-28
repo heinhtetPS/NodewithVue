@@ -25,9 +25,13 @@ export default {
     }
   },
   methods: {
-    handleSubmit: function() {
-      // this.fetchSummoner();
-      this.$emit("gotData");
+    handleSubmit: async function() {
+      let summonerData = await this.fetchSummoner();
+
+      if (summonerData) {
+        console.log(summonerData);
+        this.$emit("gotData");
+      }
 
     },
     fetchSummoner: function() {
@@ -36,8 +40,8 @@ export default {
       let fullURL = staticURL + "?" + summonerName;
       axios.get(fullURL)
       .then( (response) => {
-        console.log(response.data);
-
+        // console.log(response.data);
+        return response.data;
       })
       .catch( (error) => {
         console.log(error);
