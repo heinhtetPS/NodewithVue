@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { bus } from '../main.js';
 
 export default {
   data () {
@@ -31,34 +31,25 @@ export default {
       if (summonerData) {
         console.log(summonerData);
         this.$emit("gotData");
+        this.$emit("profileData", summonerData);
       }
 
     },
-    fetchSummoner: function() {
+    fetchSummoner: async function() {
       const staticURL = 'http://localhost:4000/searchbyname'
       let summonerName = this.$data.summonerName;
       let fullURL = staticURL + "?" + summonerName;
-      axios.get(fullURL)
-      .then( (response) => {
-        // console.log(response.data);
-        return response.data;
-      })
-      .catch( (error) => {
-        console.log(error);
-      });
+      let response = await fetch(fullURL);
+      let finalData = await response.json();
+      return finalData;
     },
-    fetchMatch: function() {
+    fetchMatch: async function() {
       const staticURL = 'http://localhost:4000/match'
       let matchGameID = 2787550758;
       let fullURL = staticURL + "?" + matchGameID;
-      console.log(fullURL);
-      axios.get(fullURL)
-      .then( (response) => {
-        console.log(response.data);
-      })
-      .catch( (error) => {
-        console.log(error);
-      });
+      let response = await fetch(fullURL);
+      let finalData = await response.json();
+      return finalData;
     }
   }
 }

@@ -5,10 +5,10 @@
         <li>Home</li>
         <li>Champions</li>
         <li>About</li>
-        <li>{{ profileData }}</li>
+        <li>{{ dataState }}</li>
       </ul>
     </nav>
-    <mainForm v-on:gotData="toggleDataRetrieved"/>
+    <mainForm v-on:gotData="toggleDataRetrieved" v-on:profileData="setProfileData"/>
     <bottomContent v-if="dataRetrieved" v-bind:profile="profileData" v-bind:matches="matches"></bottomContent>
   </div>
 </template>
@@ -16,6 +16,7 @@
 <script>
 import mainForm from './mainForm.vue';
 import bottomContent from './bottomContent.vue';
+import { bus } from '../main.js';
 
 export default {
   name: 'Home',
@@ -29,7 +30,7 @@ export default {
     //additional profile data will come from fetch, extend the data
     return {
       dataRetrieved: false,
-      profileData: '',
+      profileData: 'malifaux',
       matches: [
         {
           gameId: 2787550758,
@@ -52,12 +53,16 @@ export default {
   },
   computed: {
     dataState: function () {
-      return this.dataRetrieved;
+      return this.profileData;
     }
   },
   methods: {
     toggleDataRetrieved: function () {
       this.dataRetrieved = true;
+    },
+    setProfileData: function (obj) {
+      this.profileData = obj;
+      console.log('is it coming here');
     }
   }
 }
