@@ -29,8 +29,10 @@ export default {
       let summonerData = await this.fetchSummoner();
 
       if (summonerData) {
-        console.log(summonerData);
+        //this message triggers v-if for showing bottom content
         this.$emit("gotData");
+        //this message passes summonerData to Homepage
+        console.log(summonerData);
         this.$emit("profileData", summonerData);
       }
 

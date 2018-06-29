@@ -1,6 +1,6 @@
-<template v-if="show">
+<template>
   <div class="bottom-container">
-    <p>{{show}}</p>
+    <p></p>
     <profile class="profilebox" v-bind:data="profile"></profile>
       <matchHistory class="historybox" v-bind:matches="matches"></matchHistory>
   </div>
@@ -11,7 +11,7 @@ import matchHistory from './matchHistory.vue';
 import profile from './profile.vue';
 
 export default {
-  props: ['show', 'profile', 'matches'],
+  props: ['profile', 'matches'],
   name: 'bottomContent',
   components: {
     profile,

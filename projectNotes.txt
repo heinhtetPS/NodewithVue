@@ -29,21 +29,32 @@ VUE MAIN FORM (done)
 
 matchHistory
 - Created 1st draft for match history scroll and single match history layout
-- Need to receive props from bottomContent whenever it receives it from mainForm
+- Need to receive props from bottomContent whenever it receives it from mainForm (done)
+
 
 
 bottomContent
-- created bottomContent in order to do conditional rendering with dataRetrieved
+- created bottomContent in order to do conditional rendering with dataRetrieved (done)
 - Current issues:
   - v-if on the bottomContent template is not working despite show showing as false
   - When mainForm is submitted, it needs to emit back to parent and change dataRetrieved property to TRUE
   - when mainForm is submitted and data is retrieved, profileData needs to go to profile component and matches needs to go to matchHistory
 - SOLVED emit problem by adding a listener to the Home component with v-on, triggering JS
 - SOLVED v-if problem by making dataRetrieved property into a computed property
-- ALSO: Be careful of using ()=> in vue methods. Generally it fails. 
+- ALSO: Be careful of using ()=> in vue methods. Generally it fails.
 
 profileData
-- Need to receive props from bottomContent whenever it receives it from mainForm
+- Need to receive props from bottomContent whenever it receives it from mainForm (done)
+
+singleMatch
+- Each match, once it arrives inside its container, must request additional info about the match using the match ID
+- populate with sumspells, kills, deaths, assists, cs, items, game length, masteries if its not too hard
+
+REHAUL of static data
+- get lol version first right at the beginning, then use it to fuel the static data searches
+- Champ icons, names
+- item icons, names
+- icons for summs and masteries 
 
 
 Mon - work on including request in get. See the info populate on frontend

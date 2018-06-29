@@ -5,7 +5,7 @@
         <li>Home</li>
         <li>Champions</li>
         <li>About</li>
-        <li>{{ dataState }}</li>
+
       </ul>
     </nav>
     <mainForm v-on:gotData="toggleDataRetrieved" v-on:profileData="setProfileData"/>
@@ -62,7 +62,7 @@ export default {
     },
     setProfileData: function (obj) {
       this.profileData = obj;
-      console.log('is it coming here');
+      this.matches = obj.matches;
     }
   }
 }

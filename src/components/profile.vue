@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="profile-container">
-    <h1>{{data}}</h1>
-    <p>Summoner Level: 999</p>
-    <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + 'malifaux' + '.png'"></img>
+    <h1>{{data.name}}</h1>
+    <p>Summoner Level: {{ data.summonerLevel}}</p>
+    <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + data.name + '.png'"></img>
     <h2>Recently Played Champs</h2>
-    <ul>
+    <ul class="champlistUL">
       <li>
         <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + 'malifaux' + '.png'"></img>
       </li>
@@ -25,7 +25,11 @@ export default {
 </script>
 
 <style lang="css">
-ul {
+.champlistUL {
   display: flex;
+  flex-direction: column;
+}
+.champListUL > li {
+  list-style: none;
 }
 </style>

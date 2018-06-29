@@ -64,27 +64,4 @@ export default {
   padding-left: 20px;
 }
 
-.item-blocks {
-  display: flex;
-  width: 100%;
-}
-
-.item-block {
-  width: 30px;
-  height: 30px;
-}
-
-.item-block > img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.kda {
-  width: 30%;
-}
-
-.cs-count {
-  width: 70%;
-}
-
 </style>
