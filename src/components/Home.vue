@@ -25,9 +25,6 @@ export default {
    bottomContent
  },
   data () {
-    //get this FROM the mainForm while passing it INTO matchHistory
-    //get profile data FROM mainform and pass into profile
-    //additional profile data will come from fetch, extend the data
     return {
       dataRetrieved: false,
       profileData: 'malifaux',
@@ -90,15 +87,4 @@ a {
   color: white;
 }
 
-.bottom-container {
-  display: flex;
-}
-
-.profilebox {
-  width: 40%;
-}
-
-.historybox {
-  width: 60%;
-}
 </style>

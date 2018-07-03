@@ -32,7 +32,7 @@ export default {
         //this message triggers v-if for showing bottom content
         this.$emit("gotData");
         //this message passes summonerData to Homepage
-        console.log(summonerData);
+        // console.log(summonerData);
         this.$emit("profileData", summonerData);
       }
 
@@ -45,14 +45,6 @@ export default {
       let finalData = await response.json();
       return finalData;
     },
-    fetchMatch: async function() {
-      const staticURL = 'http://localhost:4000/match'
-      let matchGameID = 2787550758;
-      let fullURL = staticURL + "?" + matchGameID;
-      let response = await fetch(fullURL);
-      let finalData = await response.json();
-      return finalData;
-    }
   }
 }
 </script>

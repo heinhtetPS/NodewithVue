@@ -1,20 +1,10 @@
 <template lang="html">
-  <div class="profile-container">
-    <h1>{{data.name}}</h1>
-    <p>Summoner Level: {{ data.summonerLevel}}</p>
-    <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + data.name + '.png'"></img>
-    <h2>Recently Played Champs</h2>
-    <ul class="champlistUL">
-      <li>
-        <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + 'malifaux' + '.png'"></img>
-      </li>
-      <li>
-        <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + 'malifaux' + '.png'"></img>
-      </li>
-      <li>
-        <img v-bind:src="'http://avatar.leagueoflegends.com/na/' + 'malifaux' + '.png'"></img>
-      </li>
-    </ul>
+  <div>
+    <img class="profile-icon" v-bind:src="'http://avatar.leagueoflegends.com/na/' + data.name + '.png'"></img>
+    <div class="side-info">
+      <h1 class="profile-name">{{data.name}}</h1>
+      <p class="summoner-level">Summoner Level: {{ data.summonerLevel }}</p>
+    </div>
   </div>
 </template>
 
@@ -25,11 +15,20 @@ export default {
 </script>
 
 <style lang="css">
-.champlistUL {
+.profilebox {
+  width: 100%;
   display: flex;
-  flex-direction: column;
 }
-.champListUL > li {
-  list-style: none;
+
+.profile-icon {
+  padding: 10px 10px 10px 10px;
+}
+
+.side-info {
+
+}
+
+.profile-name {
+  line-height: 20px;
 }
 </style>

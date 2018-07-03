@@ -1,6 +1,5 @@
 <template>
   <div class="bottom-container">
-    <p></p>
     <profile class="profilebox" v-bind:data="profile"></profile>
       <matchHistory class="historybox" v-bind:matches="matches"></matchHistory>
   </div>
@@ -21,4 +20,7 @@ export default {
 </script>
 
 <style lang="css">
+.bottom-container {
+  
+}
 </style>

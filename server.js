@@ -71,7 +71,7 @@ app.get('/searchbyname', (req, res) => {
 app.get('/match', (req, res) => {
   let matchData = {};
   let api_key = process.env.API_KEY;
-  let gameID = 2787550758;
+  let gameID = Object.keys(req.query)[0];
   let URL = 'https://na1.api.riotgames.com/lol/match/v3/matches/' + gameID + '?api_key=' + api_key;
 
   request(URL, (err, response, body) => {

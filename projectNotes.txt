@@ -48,13 +48,15 @@ profileData
 
 singleMatch
 - Each match, once it arrives inside its container, must request additional info about the match using the match ID
+- Server call for match? is working properly
+- Now just need it to go into the right container
 - populate with sumspells, kills, deaths, assists, cs, items, game length, masteries if its not too hard
 
 REHAUL of static data
 - get lol version first right at the beginning, then use it to fuel the static data searches
 - Champ icons, names
 - item icons, names
-- icons for summs and masteries 
+- icons for summs and masteries
 
 
 Mon - work on including request in get. See the info populate on frontend
