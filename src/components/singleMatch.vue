@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text">Duration: {{  }}</h1>
+    <h1 class="result-text">{{  }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
         <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
