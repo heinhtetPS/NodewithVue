@@ -49,7 +49,9 @@ profileData
 singleMatch
 - Each match, once it arrives inside its container, must request additional info about the match using the match ID
 - Server call for match? is working properly
-- Now just need it to go into the right container
+- Now just need it to go into the right container (DONE)
+- WIN OR LOSE depends on which team you're on, which is variable
+- Make method to GET WHICH TEAM YOU"RE ON
 - populate with sumspells, kills, deaths, assists, cs, items, game length, masteries if its not too hard
 
 REHAUL of static data

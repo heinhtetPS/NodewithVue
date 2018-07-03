@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text">{{ matchInfo }}</h1>
+    <h1 class="result-text">Duration: {{  }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
         <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
@@ -16,6 +16,7 @@
     <div class="match-history-right">
       <h2 class="kda">5/4/13 Hardcode</h2>
       <h3 class="cs-count">999 cs hard</h3>
+      <p class="game-Duration">{{ getGameDuration(this.matchInfo.gameDuration) }}</p>
       <div class="item-blocks">
         <div class="item-block">
           <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1001.png"></img>
@@ -48,27 +49,41 @@
 <script>
 
 export default {
-  props: ['singleMatch'],
+  props: ['singleMatch', 'yourname'],
 
   data () {
     return {
-      matchInfo: {}
+      matchInfo: {},
+      yourTeam: '',
     }
   },
 
   created: async function () {
-    console.log(singleMatch.gameId);
-    // this.matchInfo = await this.fetchMatch();
+    this.matchInfo = await this.fetchMatch();
+
   },
 
   methods: {
     fetchMatch: async function() {
+      let self = this;
       const staticURL = 'http://localhost:4000/match'
-      let matchGameID = singleMatch.gameId;
+      let matchGameID = self.singleMatch.gameId;
       let fullURL = staticURL + "?" + matchGameID;
       let response = await fetch(fullURL);
       let finalData = await response.json();
       return finalData;
+    },
+    getGameDuration: (seconds) => {
+      let hours = (seconds / 3600);
+      let minutes = Math.round(((seconds / 3600) - Math.floor(hours)) * 60);
+
+      if (hours >= 1) {
+        return "~ " + hours + "hour" + minutes + " minutes";
+      } else {
+        return "~" + minutes + " minutes";
+      }
+
+      // return minutes;
     },
     getTheDate: (stamp) => {
       const date = new Date(stamp);
