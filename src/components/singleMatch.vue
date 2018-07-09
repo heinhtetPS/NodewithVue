@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text">{{  }}</h1>
+    <h1 class="result-text">Hardcode defeat</h1>
     <div class="match-history-left">
       <div class="champ-image">
         <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
@@ -55,6 +55,7 @@ export default {
     return {
       matchInfo: {},
       yourTeam: '',
+      yourStats: {}
     }
   },
 
@@ -82,8 +83,6 @@ export default {
       } else {
         return "~" + minutes + " minutes";
       }
-
-      // return minutes;
     },
     getTheDate: (stamp) => {
       const date = new Date(stamp);
@@ -112,7 +111,7 @@ export default {
           return "Unknown Queue Type";
       }
     },
-      convertChampKeytoName: (key) => {
+    convertChampKeytoName: (key) => {
         switch(key) {
           case 266: return "Aatrox"; break;
           case 412: return "Thresh"; break;
@@ -251,7 +250,28 @@ export default {
           case 145: return "Kaisa"; break;
         }
       }
-    }
+    },
+    identifyTeam: (teamsInfo) => {
+      //do this next
+      //look at sample data and see where we need to pull from
+    },
+    getYourStats: () => {
+      //find your name inside the participants and make a object of your stats only
+
+    },
+    victoryOrDefeat: (yourTeam) => {
+      //have to look at both the team and result
+
+    },
+    getKDA: (yourStats) => {
+      let kills = yourStats.kills;
+      let deaths = yourStats.deaths;
+      let assists = yourStats.assists;
+      if (deaths === 0)
+      deaths = 1;
+
+      return (kills + assists) / deaths;
+    },
   }
 </script>
 
