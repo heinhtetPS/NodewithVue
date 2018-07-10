@@ -5,7 +5,7 @@
         <li>Home</li>
         <li>Champions</li>
         <li>About</li>
-
+        <li>Version: {{ currentVersion }}</li>
       </ul>
     </nav>
     <mainForm v-on:gotData="toggleDataRetrieved" v-on:profileData="setProfileData"/>
@@ -16,7 +16,6 @@
 <script>
 import mainForm from './mainForm.vue';
 import bottomContent from './bottomContent.vue';
-import { bus } from '../main.js';
 
 export default {
   name: 'Home',
@@ -28,35 +27,18 @@ export default {
     return {
       dataRetrieved: false,
       profileData: '',
-      currentVersion: '',
-      matches: [
-        {
-          gameId: 2787550758,
-          champion: 163,
-          queue: 450,
-          timestamp: 1526881690983,
-          role: "DUO_CARRY",
-          lane: "BOTTOM"
-        },
-        {
-          gameId: 2787522914,
-          champion: 77,
-          queue: 420,
-          timestamp: 1523083076236,
-          role: "DUO_SUPPORT",
-          lane: "BOTTOM"
-        }
-      ]
+      currentVersion: 'vs',
+      matches: []
     }
   },
-  created: async function () {
+  created: async function() {
     this.currentVersion = await this.fetchVersion();
   },
   methods: {
-    fetchVersion: async function () {
-      let self = this;
+    fetchVersion: async function() {
       const staticURL = 'http://localhost:4000/vs'
       let response = await fetch(staticURL);
+      console.log(response);
       let finalData = await response.json();
       return finalData;
     },
