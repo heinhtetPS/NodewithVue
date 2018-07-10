@@ -66,6 +66,22 @@ https://developer.riotgames.com/static-data.html
 - icons for summs and masteries
 
 
+singleMatch methods
+- currently working with fake data so it might be off
+- setYourStats should be the first thing that it does after fetching match info. It will match you according to champ played and fill up yourStats
+- yourStats is filled with some prelim info + a large stats obj
+- yourStats.stats then becomes the final source of game data
+- victoryOrDefeat (get via yourStats.stats.win)
+- SS icons (get via yourStats.spell1Id and yourStats.spell2Id) and then use ddragon (but for some reason only flash,tele and smite exist)
+- Kills: yourStats.stats.kills
+  deaths: yourStats.stats.deaths
+  assists: yourStats.stats.assists
+
+- dmg: yourStats.stats.totalDamageDealt
+- gold: yourStats.stats.goldEarned
+- cs: yourStats.stats.totalMinionsKilled
+
+
 Mon - work on including request in get. See the info populate on frontend
 Tues - chillax after interview/job fair
 Wed - Fix the other problem from Mon. If the throughput is ok, start working on css.

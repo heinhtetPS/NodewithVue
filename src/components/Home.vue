@@ -25,22 +25,25 @@ export default {
  },
   data () {
     return {
-      dataRetrieved: false,
+      dataRetrieved: true,
       profileData: '',
       currentVersion: 'vs',
-      matches: []
+      matches: [{"platformId":"NA1","gameId":2822442302,"champion":516,"queue":450,"season":11,"timestamp":1526881690983,"role":"DUO_SUPPORT","lane":"NONE"},
+      {"platformId":"NA1","gameId":2787522914,"champion":142,"queue":420,"season":11,"timestamp":1526879131340,"role":"DUO_SUPPORT","lane":"BOTTOM"},
+      {"platformId":"NA1","gameId":2786916858,"champion":51,"queue":450,"season":11,"timestamp":1526797115899,"role":"DUO_SUPPORT","lane":"NONE"},
+      {"platformId":"NA1","gameId":2786923127,"champion":54,"queue":450,"season":11,"timestamp":1526795977497,"role":"DUO_SUPPORT","lane":"NONE"},]
     }
   },
-  created: async function() {
-    this.currentVersion = await this.fetchVersion();
-  },
+  // created: async function() {
+  //   this.currentVersion = await this.fetchVersion();
+  // },
   methods: {
     fetchVersion: async function() {
+      //something in here is causing a rate limit issue
       const staticURL = 'http://localhost:4000/vs'
       let response = await fetch(staticURL);
       console.log(response);
-      let finalData = await response.json();
-      return finalData;
+      return response;
     },
     toggleDataRetrieved: function () {
       this.dataRetrieved = true;
