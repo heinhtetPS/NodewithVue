@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text">Hardcode defeat</h1>
+    <h1 class="result-text">{{ identifyTeam(this.matchInfo) }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
-        <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
+        <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/8.5.2/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
       </div>
       <div class="mhl-column2">
         <h3>{{ convertQueueID(singleMatch.queue) }}</h3>
@@ -228,7 +228,7 @@ export default {
           case 83: return "Yorick"; break;
           case 6: return "Urgot"; break;
           case 203: return "Kindred"; break;
-          case 21: return "Miss Fortune"; break;
+          case 21: return "MissFortune"; break;
           case 62: return "Wukong"; break;
           case 53: return "Blitzcrank"; break;
           case 98: return "Shen"; break;
@@ -248,12 +248,11 @@ export default {
           case 81: return "Ezreal"; break;
           case 142: return "Zoe"; break;
           case 145: return "Kaisa"; break;
+          case 516: return "Ornn"; break;
         }
-      }
-    },
+      },
     identifyTeam: (teamsInfo) => {
-      //do this next
-      //look at sample data and see where we need to pull from
+      return teamsInfo.participants[0];
     },
     getYourStats: () => {
       //find your name inside the participants and make a object of your stats only
@@ -273,6 +272,7 @@ export default {
       return (kills + assists) / deaths;
     },
   }
+}
 </script>
 
 <style lang="css">

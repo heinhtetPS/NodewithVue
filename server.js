@@ -86,6 +86,24 @@ app.get('/match', (req, res) => {
   });
 });
 
+app.get('/vs', (req, res) => {
+  let vsData = [];
+  let api_key = process.env.API_KEY;
+  let URL = 'https://na1.api.riotgames.com/lol/static-data/v3/versions' + '?api_key=' + api_key;
+
+  request(URL, (err, response, body) => {
+    if (!err && response.statusCode === 200) {
+      var json = JSON.parse(body);
+      //assuming that the first element will always be the latest version
+      vsData = json[0];
+
+    } else {
+      console.log(err);
+    }
+    res.send(vsData);
+  });
+});
+
 // app.get('/searchbyname', (req, res) => {
 //   name = Object.keys(req.query)[0];
 //   res.send(name);

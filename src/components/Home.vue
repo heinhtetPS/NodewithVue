@@ -27,7 +27,8 @@ export default {
   data () {
     return {
       dataRetrieved: false,
-      profileData: 'malifaux',
+      profileData: '',
+      currentVersion: '',
       matches: [
         {
           gameId: 2787550758,
@@ -48,19 +49,25 @@ export default {
       ]
     }
   },
-  computed: {
-    dataState: function () {
-      return this.profileData;
-    }
+  created: async function () {
+    this.currentVersion = await this.fetchVersion();
   },
   methods: {
+    fetchVersion: async function () {
+      let self = this;
+      const staticURL = 'http://localhost:4000/vs'
+      let response = await fetch(staticURL);
+      let finalData = await response.json();
+      return finalData;
+    },
     toggleDataRetrieved: function () {
       this.dataRetrieved = true;
     },
     setProfileData: function (obj) {
       this.profileData = obj;
       this.matches = obj.matches;
-    }
+    },
+
   }
 }
 </script>
