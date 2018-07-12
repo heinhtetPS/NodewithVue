@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text">{{ victoryOrDefeat(this.yourStats) }}</h1>
+    <h1 class="result-text">{{ victoryOrDefeat(this.yourStats.stats) }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
         <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/8.5.2/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
@@ -51,157 +51,21 @@
 export default {
   props: ['singleMatch', 'yourname'],
 
-  data () {
+  data: function () {
     return {
-      matchInfo: {
-        gameId: 2822442302,
-        gameDuration: 740,
-        queueId: 450,
-        gameVersion: "8.13.235.9749",
-        participants: [
-          {
-            participantId: 1,
-            teamId: 100,
-            championId: 412,
-            spell1Id: 4,
-            spell2Id: 7,
-            highestAchievedSeasonTier: "UNRANKED",
-          },
-          {
-            participantId: 2,
-            teamId: 100,
-            championId: 18,
-            spell1Id: 4,
-            spell2Id: 7,
-            highestAchievedSeasonTier: "GOLD",
-          },
-          {
-            participantId: 4,
-            teamId: 100,
-            championId: 516,
-            spell1Id: 4,
-            spell2Id: 7,
-            highestAchievedSeasonTier: "BRONZE",
-          }
-        ]
-      },
-      yourTeam: '',
-      yourStats: {
-        participantId: 4,
-        teamId: 100,
-        championId: 516,
-        spell1Id: 4,
-        spell2Id: 7,
-        highestAchievedSeasonTier: "BRONZE",
-        stats: {
-          participantId: 4,
-          win: false,
-          item0: 3001,
-          item1: 1001,
-          item2: 3801,
-          item3: 3155,
-          item4: 3067,
-          item5: 1028,
-          item6: 2052,
-          kills: 3,
-          deaths: 5,
-          assists: 4,
-          largestKillingSpree: 0,
-          largestMultiKill: 1,
-          killingSprees: 0,
-          longestTimeSpentLiving: 242,
-          doubleKills: 0,
-          tripleKills: 0,
-          quadraKills: 0,
-          pentaKills: 0,
-          unrealKills: 0,
-          totalDamageDealt: 15957,
-          magicDamageDealt: 6561,
-          physicalDamageDealt: 9395,
-          trueDamageDealt: 0,
-          largestCriticalStrike: 0,
-          totalDamageDealtToChampions: 5076,
-          magicDamageDealtToChampions: 2822,
-          physicalDamageDealtToChampions: 2254,
-          trueDamageDealtToChampions: 0,
-          totalHeal: 1255,
-          totalUnitsHealed: 2,
-          damageSelfMitigated: 11870,
-          damageDealtToObjectives: 0,
-          damageDealtToTurrets: 0,
-          visionScore: 0,
-          timeCCingOthers: 18,
-          totalDamageTaken: 12981,
-          magicalDamageTaken: 3908,
-          physicalDamageTaken: 8217,
-          trueDamageTaken: 855,
-          goldEarned: 6978,
-          goldSpent: 6450,
-          turretKills: 0,
-          inhibitorKills: 0,
-          totalMinionsKilled: 20,
-          neutralMinionsKilled: 0,
-          totalTimeCrowdControlDealt: 166,
-          champLevel: 12,
-          visionWardsBoughtInGame: 0,
-          sightWardsBoughtInGame: 0,
-          firstBloodKill: true,
-          firstBloodAssist: false,
-          firstTowerKill: false,
-          firstTowerAssist: false,
-          firstInhibitorKill: false,
-          firstInhibitorAssist: false,
-          combatPlayerScore: 0,
-          objectivePlayerScore: 0,
-          totalPlayerScore: 0,
-          totalScoreRank: 0,
-          playerScore0: 0,
-          playerScore1: 0,
-          playerScore2: 0,
-          playerScore3: 0,
-          playerScore4: 0,
-          playerScore5: 0,
-          playerScore6: 0,
-          playerScore7: 0,
-          playerScore8: 0,
-          playerScore9: 0,
-          perk0: 8437,
-          perk0Var1: 283,
-          perk0Var2: 233,
-          perk0Var3: 0,
-          perk1: 8473,
-          perk1Var1: 289,
-          perk1Var2: 0,
-          perk1Var3: 0,
-          perk2: 8444,
-          perk2Var1: 845,
-          perk2Var2: 0,
-          perk2Var3: 0,
-          perk3: 8451,
-          perk3Var1: 79,
-          perk3Var2: 0,
-          perk3Var3: 0,
-          perk4: 8009,
-          perk4Var1: 575,
-          perk4Var2: 61,
-          perk4Var3: 0,
-          perk5: 8014,
-          perk5Var1: 105,
-          perk5Var2: 0,
-          perk5Var3: 0,
-          perkPrimaryStyle: 8400,
-          perkSubStyle: 8000
-        }
-
-      },
+      propInfo: this.singleMatch,
+      matchInfo: {},
+      yourStats: {},
       yourItems: []
     }
   },
 
-  // created: async function () {
-  //   this.matchInfo = await this.fetchMatch();
-  //
-  // },
+  created: async function () {
+    this.matchInfo = await this.fetchMatch();
+
+    if (this.matchInfo !== {})
+    this.setYourStats(this.matchInfo);
+  },
 
   methods: {
     fetchMatch: async function() {
@@ -257,10 +121,11 @@ export default {
           case 23: return "Tryndamere"; break;
           case 79: return "Gragas"; break;
           case 69: return "Cassiopeia"; break;
-          case 136: return "Aurelion Sol"; break;
+          case 136: return "AurelionSol"; break;
           case 13: return "Ryze"; break;
           case 78: return "Poppy"; break;
           case 14: return "Sion"; break;
+          case 164: return "Camille"; break;
           case 1: return "Annie"; break;
           case 202: return "Jhin"; break;
           case 43: return "Karma"; break;
@@ -298,7 +163,7 @@ export default {
           case 134: return "Syndra"; break;
           case 80: return "Pantheon"; break;
           case 92: return "Riven"; break;
-          case 121: return "Kha'Zix"; break;
+          case 121: return "Khazix"; break;
           case 42: return "Corki"; break;
           case 268: return "Azir"; break;
           case 51: return "Caitlyn"; break;
@@ -313,24 +178,24 @@ export default {
           case 254: return "Vi"; break;
           case 10: return "Kayle"; break;
           case 39: return "Irelia"; break;
-          case 64: return "Lee Sin"; break;
+          case 64: return "LeeSin"; break;
           case 420: return "Illaoi"; break;
           case 60: return "Elise"; break;
           case 106: return "Volibear"; break;
           case 20: return "Nunu"; break;
-          case 4: return "Twisted Fate"; break;
+          case 4: return "TwistedFate"; break;
           case 24: return "Jax"; break;
           case 102: return "Shyvana"; break;
           case 429: return "Kalista"; break;
-          case 36: return "Dr. Mundo"; break;
+          case 36: return "DrMundo"; break;
           case 427: return "Ivern"; break;
           case 131: return "Diana"; break;
-          case 223: return "Tahm Kench"; break;
+          case 223: return "TahmKench"; break;
           case 63: return "Brand"; break;
           case 113: return "Sejuani"; break;
           case 8: return "Vladimir"; break;
           case 154: return "Zac"; break;
-          case 421: return "Rek'Sai"; break;
+          case 421: return "RekSai"; break;
           case 133: return "Quinn"; break;
           case 84: return "Akali"; break;
           case 163: return "Taliyah"; break;
@@ -357,7 +222,7 @@ export default {
           case 61: return "Orianna"; break;
           case 114: return "Fiora"; break;
           case 9: return "Fiddlesticks"; break;
-          case 31: return "Cho'Gath"; break;
+          case 31: return "ChoGath"; break;
           case 33: return "Rammus"; break;
           case 7: return "LeBlanc"; break;
           case 16: return "Soraka"; break;
@@ -372,40 +237,36 @@ export default {
           case 53: return "Blitzcrank"; break;
           case 98: return "Shen"; break;
           case 201: return "Braum"; break;
-          case 5: return "Xin Zhao"; break;
+          case 5: return "XinZhao"; break;
           case 29: return "Twitch"; break;
-          case 11: return "Master Yi"; break;
+          case 11: return "MasterYi"; break;
           case 44: return "Taric"; break;
           case 32: return "Amumu"; break;
           case 41: return "Gangplank"; break;
           case 48: return "Trundle"; break;
           case 38: return "Kassadin"; break;
-          case 161: return "Vel'Koz"; break;
+          case 161: return "VelKoz"; break;
           case 143: return "Zyra"; break;
           case 267: return "Nami"; break;
-          case 59: return "Jarvan IV"; break;
+          case 59: return "JarvanIV"; break;
           case 81: return "Ezreal"; break;
           case 142: return "Zoe"; break;
           case 145: return "Kaisa"; break;
           case 516: return "Ornn"; break;
         }
       },
-    setYourStats: (teamsInfo) => {
+    setYourStats: function(teamsInfo) {
       let self = this;
       let myStats = {};
-      // let myChampID = self.singleMatch.champion;
-      let myChampID = 516;
+      let myChampID = self.singleMatch.champion;
 
       teamsInfo.participants.forEach( function(player) {
         if (myChampID === player.championId) {
           myStats = player;
-        } else {
-          myStats = 'error';
         }
       });
-      console.log(myChampID);
-      this.myStats = myStats;
-      // return myChampID;
+
+      this.yourStats = myStats;
     },
     setYourItems: (yourStats) => {
       let items = [];
@@ -421,10 +282,10 @@ export default {
       this.yourItems = items;
 
     },
-    victoryOrDefeat: (yourStats) => {
-      if (yourStats.win) {
+    victoryOrDefeat: function(stats) {
+      if (stats.win === true) {
         return "VICTORY";
-      } else if (!yourStats.win) {
+      } else if (stats.win === false) {
         return "DEFEAT";
       } else {
         return "ERROR";

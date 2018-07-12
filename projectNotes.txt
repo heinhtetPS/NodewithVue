@@ -61,17 +61,18 @@ singleMatch
 REHAUL of static data
 https://developer.riotgames.com/static-data.html
 - get lol version first right at the beginning, then use it to fuel the static data searches
+ONLY THE VERSION API CALL CAUSES RATE LIMIT EXCEEDED. MAYBE YOU SHOULD TRY SOMETHING ELSE.
 - Champ icons, names
 - item icons, names
 - icons for summs and masteries
 
 
 singleMatch methods
-- currently working with fake data so it might be off
-- setYourStats should be the first thing that it does after fetching match info. It will match you according to champ played and fill up yourStats
-- yourStats is filled with some prelim info + a large stats obj
-- yourStats.stats then becomes the final source of game data
-- victoryOrDefeat (get via yourStats.stats.win)
+- currently working with fake data so it might be off(NOT)
+- setYourStats should be the first thing that it does after fetching match info. It will match you according to champ played and fill up yourStats (DONE)
+- yourStats is filled with some prelim info + a large stats obj (DONE)
+- yourStats.stats then becomes the final source of game data (DONE)
+- victoryOrDefeat (get via yourStats.stats.win) (THIS PRODUCES RESULTS BUT CAUSES CONSOLE ERROR TYPE ERROR)
 - SS icons (get via yourStats.spell1Id and yourStats.spell2Id) and then use ddragon (but for some reason only flash,tele and smite exist)
 - Kills: yourStats.stats.kills
   deaths: yourStats.stats.deaths
