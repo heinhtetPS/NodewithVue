@@ -5,7 +5,6 @@
         <li>Home</li>
         <li>Champions</li>
         <li>About</li>
-        <li>Version: {{ currentVersion }}</li>
       </ul>
     </nav>
     <mainForm v-on:gotData="toggleDataRetrieved" v-on:profileData="setProfileData"/>
@@ -25,7 +24,7 @@ export default {
  },
   data () {
     return {
-      dataRetrieved: true,
+      dataRetrieved: false,
       profileData: '',
       currentVersion: 'vs',
       matches: [{"platformId":"NA1","gameId":2822442302,"champion":516,"queue":450,"season":11,"timestamp":1526881690983,"role":"DUO_SUPPORT","lane":"NONE"},
@@ -42,8 +41,9 @@ export default {
       //something in here is causing a rate limit issue
       const staticURL = 'http://localhost:4000/vs'
       let response = await fetch(staticURL);
-      console.log(response);
-      return response;
+      let version = await response.json();
+      console.log(version);
+      return version;
     },
     toggleDataRetrieved: function () {
       this.dataRetrieved = true;

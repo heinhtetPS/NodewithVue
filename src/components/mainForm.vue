@@ -9,6 +9,7 @@
         <option default value="NA">NA</option>
       </select>
       <button type="submit">Search</button><br />
+      <p>{{ version }}</p>
     </form>
   </div>
 
@@ -21,12 +22,14 @@ export default {
   data () {
     return {
       summonerName: '',
-      server: "NA"
+      server: "NA",
+      version: 'ooo',
     }
   },
   methods: {
     handleSubmit: async function() {
       let summonerData = await this.fetchSummoner();
+      this.version = await this.fetchVersion();
 
       if (summonerData) {
         //this message triggers v-if for showing bottom content
@@ -45,6 +48,13 @@ export default {
       let finalData = await response.json();
       return finalData;
     },
+    fetchVersion: async function() {
+      const staticURL = 'http://localhost:4000/vs'
+      let response = await fetch(staticURL);
+      //it is because its just a 1 liner that response.json doesn't work and causes error?
+      let version = await response.text();
+      return version;
+    }
   }
 }
 </script>
