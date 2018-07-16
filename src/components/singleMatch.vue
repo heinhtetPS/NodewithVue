@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text">{{ victoryOrDefeat(this.yourStats.stats) }}</h1>
+    <h1 class="result-text">{{ this.yourStats.stats }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
         <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/8.5.2/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
@@ -16,7 +16,6 @@
     <div class="match-history-right">
       <h2 class="kda">5/4/13 Hardcode</h2>
       <h3 class="cs-count">999 cs hard</h3>
-      <p class="game-Duration">{{ getGameDuration(this.matchInfo.gameDuration) }}</p>
       <div class="item-blocks">
         <div class="item-block">
           <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1001.png"></img>
@@ -40,8 +39,11 @@
           <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1007.png"></image>
         </div>
       </div>
+      <div class="below-items">
         <p class="timeofday">{{ getTheHours(singleMatch.timestamp) }}</p>
         <p class="dateofgame">{{ getTheDate(singleMatch.timestamp) }}</p>
+        <p class="game-Duration">{{ getGameDuration(this.matchInfo.gameDuration) }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -73,8 +75,32 @@ export default {
       const staticURL = 'http://localhost:4000/match'
       let matchGameID = self.singleMatch.gameId;
       let fullURL = staticURL + "?" + matchGameID;
-      let response = await fetch(fullURL);
-      let finalData = await response.json();
+      let finalData = {};
+
+      try {
+        let response = await fetch(fullURL);
+        finalData = await response.json();
+      } catch (err) {
+        alert(err);
+        console.log("failed to fetch match, using fake data");
+        //fake data incomplete, put in teams, parts and ids
+        finalData = {
+          gameId: 2787550758,
+          platformId: "NA1",
+          gameCreation: 1526881690983,
+          gameDuration: 1174,
+          queueId: 450,
+          mapId: 12,
+          seasonId: 11,
+          gameVersion: "8.10.229.7328",
+          gameMode: "ARAM",
+          gameType: "MATCHED_GAME",
+          teams: [],
+          participants: [],
+          participantIdentities: []
+        }
+      }
+
       return finalData;
     },
     getGameDuration: (seconds) => {
@@ -283,6 +309,7 @@ export default {
 
     },
     victoryOrDefeat: function(stats) {
+      //not working
       if (stats.win === true) {
         return "VICTORY";
       } else if (stats.win === false) {
@@ -320,11 +347,25 @@ export default {
   max-height: 100%;
 }
 
+.kda {
+  margin-right: 50px;
+}
+
+.below-items {
+  display: flex;
+}
+
 .timeofday {
-  width: 30%;
+  width: 20%;
+  margin-right: 30px;
 }
 
 .dateofgame {
-  width: 70%;
+  width: 20%;
+  margin-right: 100px;
+}
+
+.game-Duration {
+  width: 60%;
 }
 </style>

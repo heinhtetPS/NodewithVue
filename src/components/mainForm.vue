@@ -46,18 +46,46 @@ export default {
       const staticURL = 'http://localhost:4000/searchbyname'
       let summonerName = this.$data.summonerName;
       let fullURL = staticURL + "?" + summonerName;
-      let response = await fetch(fullURL);
-      let finalData = await response.json();
+      let finalData = {};
+
+      try {
+        let response = await fetch(fullURL);
+        finalData = await response.json();
+      } catch (err) {
+        alert(err);
+        console.log('error with fetch, using fake data');
+        finalData = {
+          id: 318944,
+          accountId: 345778,
+          name: "malifaux",
+          profileIconId: 539,
+          revisionDate: 1515748743000,
+          summonerLevel: 47,
+          matches:
+            [
+              {"platformId":"NA1","gameId":2787550758,"champion":163,"queue":450,"season":11,"timestamp":1526881690983,"role":"DUO_SUPPORT","lane":"NONE"},
+              {"platformId":"NA1","gameId":2787522914,"champion":142,"queue":420,"season":11,"timestamp":1526879131340,"role":"DUO_SUPPORT","lane":"BOTTOM"},
+              {"platformId":"NA1","gameId":2786916858,"champion":51,"queue":450,"season":11,"timestamp":1526797115899,"role":"DUO_SUPPORT","lane":"NONE"},
+              {"platformId":"NA1","gameId":2786923127,"champion":54,"queue":450,"season":11,"timestamp":1526795977497,"role":"DUO_SUPPORT","lane":"NONE"},
+              {"platformId":"NA1","gameId":2786328631,"champion":86,"queue":450,"season":11,"timestamp":1526712510802,"role":"DUO_SUPPORT","lane":"TOP"},
+              {"platformId":"NA1","gameId":2785560928,"champion":131,"queue":450,"season":11,"timestamp":1526630537352,"role":"DUO_SUPPORT","lane":"NONE"},
+              {"platformId":"NA1","gameId":2785526155,"champion":133,"queue":420,"season":11,"timestamp":1526627222229,"role":"DUO_CARRY","lane":"BOTTOM"},
+              {"platformId":"NA1","gameId":2785021946,"champion":90,"queue":450,"season":11,"timestamp":1526537286689,"role":"DUO_SUPPORT","lane":"NONE"},
+              {"platformId":"NA1","gameId":2784996485,"champion":127,"queue":420,"season":11,"timestamp":1526535154874,"role":"SOLO","lane":"MID"},
+              {"platformId":"NA1","gameId":2784970207,"champion":28,"queue":420,"season":11,"timestamp":1526532955006,"role":"NONE","lane":"JUNGLE"}
+            ]
+          }
+      }
       return finalData;
     },
-    fetchVersion: async function() {
-      const staticURL = 'http://localhost:4000/vs'
-      let response = await fetch(staticURL);
-      //it is because its just a 1 liner that response.json doesn't work and causes error?
-      let version = await response.text();
-      console.log(version);
-      return version;
-    }
+    // fetchVersion: async function() {
+    //   const staticURL = 'http://localhost:4000/vs'
+    //   let response = await fetch(staticURL);
+    //   //it is because its just a 1 liner that response.json doesn't work and causes error?
+    //   let version = await response.text();
+    //   console.log(version);
+    //   return version;
+    // }
   }
 }
 </script>
