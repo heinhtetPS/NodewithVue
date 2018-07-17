@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text">{{ this.yourStats.stats }}</h1>
+    <h1 class="result-text"> stats.win is undefined</h1>
     <div class="match-history-left">
       <div class="champ-image">
         <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/8.5.2/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
@@ -8,8 +8,8 @@
       <div class="mhl-column2">
         <h3>{{ convertQueueID(singleMatch.queue) }}</h3>
         <div class="spells-and-runes">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/SummonerFlash.png"></img>
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/SummonerFlash.png"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/' + convertSSKeytoName(this.yourStats.spell1Id) + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/' + convertSSKeytoName(this.yourStats.spell2Id) + '.png'"></img>
         </div>
       </div>
     </div>
@@ -62,8 +62,9 @@ export default {
   created: async function () {
     this.matchInfo = await this.fetchMatch();
 
-    if (this.matchInfo !== {})
-    this.setYourStats(this.matchInfo);
+    if (this.matchInfo !== {}) {
+      this.setYourStats(this.matchInfo);
+    }
   },
 
   methods: {
@@ -93,7 +94,230 @@ export default {
           gameMode: "ARAM",
           gameType: "MATCHED_GAME",
           teams: [],
-          participants: [],
+          participants: [
+            {
+              participantId: 1,
+              teamId: 100,
+              championId: 20,
+              spell1Id: 4,
+              spell2Id: 7,
+              highestAchievedSeasonTier: "BRONZE",
+              stats: {
+                participantId: 1,
+                win: true,
+                item0: 3009,
+                item1: 3031,
+                item2: 3094,
+                item3: 3026,
+                item4: 3508,
+                item5: 1055,
+                item6: 3340,
+                kills: 16,
+                deaths: 2,
+                assists: 11,
+                largestKillingSpree: 7,
+                largestMultiKill: 3,
+                killingSprees: 3,
+                longestTimeSpentLiving: 1000,
+                doubleKills: 3,
+                tripleKills: 1,
+                quadraKills: 0,
+                pentaKills: 0,
+                unrealKills: 0,
+                totalDamageDealt: 160296,
+                magicDamageDealt: 17070,
+                physicalDamageDealt: 142562,
+                trueDamageDealt: 664,
+                largestCriticalStrike: 1583,
+                totalDamageDealtToChampions: 26951,
+                magicDamageDealtToChampions: 2300,
+                physicalDamageDealtToChampions: 24367,
+                trueDamageDealtToChampions: 284,
+                totalHeal: 2441,
+                totalUnitsHealed: 3,
+                damageSelfMitigated: 3200,
+                damageDealtToObjectives: 13994,
+                damageDealtToTurrets: 5598,
+                visionScore: 22,
+                timeCCingOthers: 54,
+                totalDamageTaken: 10036,
+                magicalDamageTaken: 4017,
+                physicalDamageTaken: 4627,
+                trueDamageTaken: 1390,
+                goldEarned: 17093,
+                goldSpent: 13450,
+                turretKills: 5,
+                inhibitorKills: 1,
+                totalMinionsKilled: 177,
+                neutralMinionsKilled: 16,
+                neutralMinionsKilledTeamJungle: 8,
+                neutralMinionsKilledEnemyJungle: 4,
+                totalTimeCrowdControlDealt: 392,
+                champLevel: 15,
+                visionWardsBoughtInGame: 2,
+                sightWardsBoughtInGame: 0,
+                wardsPlaced: 10,
+                wardsKilled: 1,
+                firstBloodKill: false,
+                firstBloodAssist: false,
+                firstTowerKill: true,
+                firstTowerAssist: false,
+                firstInhibitorKill: false,
+                firstInhibitorAssist: true,
+                combatPlayerScore: 0,
+                objectivePlayerScore: 0,
+                totalPlayerScore: 0,
+                totalScoreRank: 0,
+                playerScore0: 0,
+                playerScore1: 0,
+                playerScore2: 0,
+                playerScore3: 0,
+                playerScore4: 0,
+                playerScore5: 0,
+                playerScore6: 0,
+                playerScore7: 0,
+                playerScore8: 0,
+                playerScore9: 0,
+                perk0: 8214,
+                perk0Var1: 1606,
+                perk0Var2: 102,
+                perk0Var3: 0,
+                perk1: 8243,
+                perk1Var1: 15,
+                perk1Var2: 0,
+                perk1Var3: 0,
+                perk2: 8210,
+                perk2Var1: 12,
+                perk2Var2: 0,
+                perk2Var3: 0,
+                perk3: 8236,
+                perk3Var1: 28,
+                perk3Var2: 0,
+                perk3Var3: 0,
+                perk4: 9111,
+                perk4Var1: 482,
+                perk4Var2: 0,
+                perk4Var3: 0,
+                perk5: 8014,
+                perk5Var1: 730,
+                perk5Var2: 0,
+                perk5Var3: 0,
+                perkPrimaryStyle: 8200,
+                perkSubStyle: 8000
+              }
+            },
+            {
+              participantId: 2,
+              teamId: 100,
+              championId: 111,
+              spell1Id: 4,
+              spell2Id: 14,
+              highestAchievedSeasonTier: "BRONZE",
+              stats: {
+                participantId: 2,
+                win: true,
+                item0: 3111,
+                item1: 3143,
+                item2: 3401,
+                item3: 3065,
+                item4: 1028,
+                item5: 1028,
+                item6: 3364,
+                kills: 3,
+                deaths: 5,
+                assists: 22,
+                largestKillingSpree: 2,
+                largestMultiKill: 1,
+                killingSprees: 1,
+                longestTimeSpentLiving: 1012,
+                doubleKills: 0,
+                tripleKills: 0,
+                quadraKills: 0,
+                pentaKills: 0,
+                unrealKills: 0,
+                totalDamageDealt: 58041,
+                magicDamageDealt: 21567,
+                physicalDamageDealt: 21649,
+                trueDamageDealt: 14824,
+                largestCriticalStrike: 0,
+                totalDamageDealtToChampions: 15909,
+                magicDamageDealtToChampions: 10080,
+                physicalDamageDealtToChampions: 4184,
+                trueDamageDealtToChampions: 1645,
+                totalHeal: 6136,
+                totalUnitsHealed: 6,
+                damageSelfMitigated: 36352,
+                damageDealtToObjectives: 7159,
+                damageDealtToTurrets: 5103,
+                visionScore: 52,
+                timeCCingOthers: 83,
+                totalDamageTaken: 32166,
+                magicalDamageTaken: 10800,
+                physicalDamageTaken: 16252,
+                trueDamageTaken: 5113,
+                goldEarned: 10678,
+                goldSpent: 9725,
+                turretKills: 1,
+                inhibitorKills: 0,
+                totalMinionsKilled: 62,
+                neutralMinionsKilled: 4,
+                neutralMinionsKilledTeamJungle: 0,
+                neutralMinionsKilledEnemyJungle: 0,
+                totalTimeCrowdControlDealt: 556,
+                champLevel: 15,
+                visionWardsBoughtInGame: 3,
+                sightWardsBoughtInGame: 0,
+                wardsPlaced: 20,
+                wardsKilled: 2,
+                firstBloodKill: false,
+                firstBloodAssist: false,
+                firstTowerKill: false,
+                firstTowerAssist: false,
+                firstInhibitorKill: false,
+                firstInhibitorAssist: true,
+                combatPlayerScore: 0,
+                objectivePlayerScore: 0,
+                totalPlayerScore: 0,
+                totalScoreRank: 0,
+                playerScore0: 0,
+                playerScore1: 0,
+                playerScore2: 0,
+                playerScore3: 0,
+                playerScore4: 0,
+                playerScore5: 0,
+                playerScore6: 0,
+                playerScore7: 0,
+                playerScore8: 0,
+                playerScore9: 0,
+                perk0: 8439,
+                perk0Var1: 984,
+                perk0Var2: 0,
+                perk0Var3: 0,
+                perk1: 8446,
+                perk1Var1: 2899,
+                perk1Var2: 0,
+                perk1Var3: 0,
+                perk2: 8444,
+                perk2Var1: 2102,
+                perk2Var2: 0,
+                perk2Var3: 0,
+                perk3: 8451,
+                perk3Var1: 266,
+                perk3Var2: 0,
+                perk3Var3: 0,
+                perk4: 8243,
+                perk4Var1: 15,
+                perk4Var2: 0,
+                perk4Var3: 0,
+                perk5: 8237,
+                perk5Var1: 548,
+                perk5Var2: 0,
+                perk5Var3: 0,
+                perkPrimaryStyle: 8400,
+                perkSubStyle: 8200
+              }
+            }
+          ],
           participantIdentities: []
         }
       }
@@ -278,6 +502,19 @@ export default {
           case 516: return "Ornn"; break;
         }
       },
+    convertSSKeytoName: (key) => {
+      switch (key) {
+        case 3: return "SummonerExhaust"; break;
+        case 4: return "SummonerFlash"; break;
+        case 6: return "SummonerHaste"; break;
+        case 14: return "SummonerDot"; break;
+        case 7: return "SummonerHeal"; break;
+        case 13: return "SummonerMana"; break;
+        case 11: return "SummonerSmite"; break;
+        case 32: return "SummonerSnowball"; break;
+        case 12: return "SummonerTeleport"; break;
+      }
+    },
     setYourStats: function(teamsInfo) {
       let self = this;
       let myStats = {};
@@ -286,6 +523,7 @@ export default {
       teamsInfo.participants.forEach( function(player) {
         if (myChampID === player.championId) {
           myStats = player;
+          console.log('found it');
         }
       });
 
