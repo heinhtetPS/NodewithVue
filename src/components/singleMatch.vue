@@ -18,7 +18,7 @@
       <h3 class="cs-count">999 cs hard</h3>
       <div class="item-blocks">
         <div class="item-block">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1001.png"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[0] + '.png'"></img>
         </div>
         <div class="item-block">
           <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1001.png"></img>
@@ -64,6 +64,7 @@ export default {
 
     if (this.matchInfo !== {}) {
       this.setYourStats(this.matchInfo);
+      this.setYourItems(this.yourStats.stats);
     }
   },
 
@@ -541,7 +542,7 @@ export default {
       items.push(yourStats.item5);
 
       this.yourItems = items;
-
+      console.log(this.yourItems);
     },
     victoryOrDefeat: function(stats) {
       //not working

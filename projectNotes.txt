@@ -56,7 +56,7 @@ singleMatch
   - make findTeam method to find your name in the 2 team rosters
   - set that team as 'your team'
   - now you can get your stats from that game.
-- populate with sumspells, kills, deaths, assists, cs, items, game length, masteries if its not too hard
+- populate with sumspells(DONE), kills, deaths, assists, cs, items(PART DONE), game length, masteries if its not too hard
 
 REHAUL of static data
 https://developer.riotgames.com/static-data.html
