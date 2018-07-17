@@ -66,6 +66,10 @@ ONLY THE VERSION API CALL CAUSES RATE LIMIT EXCEEDED. MAYBE YOU SHOULD TRY SOMET
 - item icons, names
 - icons for summs and masteries
 
+format
+kda, cs (icon) and gold (icon) below the items
+on right side can be other stuff (lowest row is length of game and date)
+
 
 singleMatch methods
 - currently working with fake data so it might be off(NOT)
