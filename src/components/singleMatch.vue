@@ -35,9 +35,6 @@
         <div class="item-block">
           <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1006.png"></image>
         </div>
-        <div class="item-block">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1007.png"></image>
-        </div>
       </div>
       <div class="below-items">
         <p class="timeofday">{{ getTheHours(singleMatch.timestamp) }}</p>
