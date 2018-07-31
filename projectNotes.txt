@@ -245,3 +245,10 @@ participantIdentities: []
 Each box of an individual game will pull up its own game stats using gameid
 timestamp can be used to get a date or X days ago
 champid can be used to get icon
+
+
+
+misc
+-  try champ splash in the bg
+- try in-game item format
+- more compact less width 
