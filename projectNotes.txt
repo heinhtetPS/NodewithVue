@@ -37,8 +37,8 @@ bottomContent
 - created bottomContent in order to do conditional rendering with dataRetrieved (done)
 - Current issues:
   - v-if on the bottomContent template is not working despite show showing as false
-  - When mainForm is submitted, it needs to emit back to parent and change dataRetrieved property to TRUE
-  - when mainForm is submitted and data is retrieved, profileData needs to go to profile component and matches needs to go to matchHistory
+  - When mainForm is submitted, it needs to emit back to parent and change dataRetrieved property to TRUE (done)
+  - when mainForm is submitted and data is retrieved, profileData needs to go to profile component and matches needs to go to matchHistory (done)
 - SOLVED emit problem by adding a listener to the Home component with v-on, triggering JS
 - SOLVED v-if problem by making dataRetrieved property into a computed property
 - ALSO: Be careful of using ()=> in vue methods. Generally it fails.
@@ -85,6 +85,15 @@ singleMatch methods
 - dmg: yourStats.stats.totalDamageDealt
 - gold: yourStats.stats.goldEarned
 - cs: yourStats.stats.totalMinionsKilled
+
+- Current problem: No html element is responding to the new data retrieved.
+  - we can see that data is updated using the test button that logs this.yourItems. It shows the items after extracting from blob.
+  - However, {{this.yourItems}} inside HTML still shows a blank default array
+  - FUckin () => problem again made setYourItems not update the DOM. (fixed)
+  - now just need to clean up, when item is blank, show blank square, figure out what to do with invalid item IDs
+
+There are no more hardcoded stats in singleMatch. Now, just need to fix items and we can move on to styling and other stuff. 
+
 
 
 
@@ -251,4 +260,4 @@ champid can be used to get icon
 misc
 -  try champ splash in the bg
 - try in-game item format
-- more compact less width 
+- more compact less width

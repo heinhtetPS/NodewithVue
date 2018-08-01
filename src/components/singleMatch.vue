@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="single-match">
-    <h1 class="result-text"> stats.win is undefined</h1>
+    <button v-on:click="doTest">test</button>
+    <h1 class="result-text"> {{ victoryOrDefeat(this.yourStats.stats) }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
         <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/8.5.2/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
@@ -14,26 +15,26 @@
       </div>
     </div>
     <div class="match-history-right">
-      <h2 class="kda">5/4/13 Hardcode</h2>
-      <h3 class="cs-count">999 cs hard</h3>
+      <h2 class="kda">{{ getScore() }}</h2>
+      <h3 class="cs-count">{{ this.yourStats.stats.totalMinionsKilled }} cs</h3>
       <div class="item-blocks">
         <div class="item-block">
           <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[0] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1001.png"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[1] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1004.png"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[2] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1004.png"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[3] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1006.png"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[4] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img src="http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/1006.png"></image>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[5] + '.png'"></image>
         </div>
       </div>
       <div class="below-items">
@@ -325,6 +326,9 @@ export default {
 
       return finalData;
     },
+    doTest: () => {
+      console.log(yourItems);
+    },
     getGameDuration: (seconds) => {
       let hours = (seconds / 3600);
       let minutes = Math.round(((seconds / 3600) - Math.floor(hours)) * 60);
@@ -396,7 +400,7 @@ export default {
           case 68: return "Rumble"; break;
           case 82: return "Mordekaiser"; break;
           case 37: return "Sona"; break;
-          case 96: return "Kog'Maw"; break;
+          case 96: return "KogMaw"; break;
           case 55: return "Katarina"; break;
           case 117: return "Lulu"; break;
           case 22: return "Ashe"; break;
@@ -524,13 +528,12 @@ export default {
       teamsInfo.participants.forEach( function(player) {
         if (myChampID === player.championId) {
           myStats = player;
-          console.log('found it');
         }
       });
 
       this.yourStats = myStats;
     },
-    setYourItems: (yourStats) => {
+    setYourItems: function(yourStats) {
       let items = [];
 
       items.push(yourStats.item0);
@@ -542,7 +545,9 @@ export default {
       items.push(yourStats.item5);
 
       this.yourItems = items;
-      console.log(this.yourItems);
+      //console.log(this.yourItems); this totally works but doesn't update DOM
+      //why doesn't this update DOM?
+      //BECAUSE OF () =>
     },
     victoryOrDefeat: function(stats) {
       //not working
@@ -554,15 +559,28 @@ export default {
         return "ERROR";
       }
     },
+    getScore: function() {
+      let kills = this.yourStats.stats.kills;
+      let deaths = this.yourStats.stats.deaths;
+      let assists = this.yourStats.stats.assists;
+      let score = kills + "/" + deaths + "/" + assists;
+      console.log(score);
+      return score;
+    },
     getKDA: (yourStats) => {
-      let kills = yourStats.kills;
-      let deaths = yourStats.deaths;
-      let assists = yourStats.assists;
+      let kills = yourStats.stats.kills;
+      let deaths = yourStats.stats.deaths;
+      let assists = yourStats.stats.assists;
       if (deaths === 0)
       deaths = 1;
 
       return (kills + assists) / deaths;
     },
+  },
+  computed: {
+    getyourItems: function () {
+      return this.yourItems;
+    }
   }
 }
 </script>
