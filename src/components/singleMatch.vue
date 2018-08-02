@@ -1,6 +1,8 @@
 <template lang="html">
   <div class="single-match">
-    <button v-on:click="doTest">test</button>
+    <div class="splashbox">
+      <img class="bg-splash" v-bind:src="'http://ddragon.leagueoflegends.com/cdn/img/champion/splash/' + convertChampKeytoName(singleMatch.champion) + '_0.jpg'"></img>
+    </div>
     <h1 class="result-text"> {{ victoryOrDefeat(this.yourStats.stats) }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
@@ -43,7 +45,6 @@
         <p class="game-Duration">{{ getGameDuration(this.matchInfo.gameDuration) }}</p>
       </div>
     </div>
-    <p>{{version}}</p>
   </div>
 </template>
 
@@ -575,6 +576,27 @@ export default {
 </script>
 
 <style lang="css">
+.single-match {
+  width: 100%;
+  height: 100%;
+  border: 1px solid green;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0px 0px 0px;
+}
+
+.splashbox {
+  width: 1140px;
+  height: 279px;
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bg-splash {
+  z-index: -1;
+  opacity: 0.5;
+}
 .result-text {
   width: 100%;
 }
@@ -582,13 +604,18 @@ export default {
 .match-history-left {
   border: 1px solid red;
   padding: 25px 0px 0px 20px;
-  width: 50%;
+  width: 30%;
   display: flex;
 }
 
 .champ-image {
   width: 120px;
   height: 120px;
+  border-radius: 6px;
+}
+
+.champ-image > img {
+  border-radius: 6px;
 }
 
 .spells-and-runes {
@@ -602,11 +629,12 @@ export default {
 .spells-and-runes > img {
   max-width: 50%;
   max-height: 50%;
+  border-radius: 6px;
 }
 
 .match-history-right {
   border: 1px solid blue;
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -614,6 +642,7 @@ export default {
 }
 .item-blocks {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -629,6 +658,7 @@ export default {
 .item-block > img {
   max-width: 100%;
   max-height: 100%;
+  border-radius: 6px;
 }
 
 .kda {

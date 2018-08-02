@@ -17,14 +17,6 @@ export default {
 
 <style lang="css">
 
-.single-match {
-  width: 100%;
-  border: 1px solid green;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #a2f78d;
-}
-
 
 
 </style>

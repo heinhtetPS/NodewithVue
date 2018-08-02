@@ -92,11 +92,7 @@ singleMatch methods
   - FUckin () => problem again made setYourItems not update the DOM. (fixed)
   - now just need to clean up, when item is blank, show blank square, figure out what to do with invalid item IDs
 
-There are no more hardcoded stats in singleMatch. Now, just need to fix items and we can move on to styling and other stuff. 
-
-
-
-
+There are no more hardcoded stats in singleMatch. Now, just need to fix items and we can move on to styling and other stuff.
 
 Extras
 - Expand to EU and other servers
