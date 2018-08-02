@@ -48,7 +48,7 @@ export default {
         finalData = await response.json();
       } catch (err) {
         alert(err);
-        console.log('error with fetch, using fake data');
+        alert('error with fetch, using fake data');
         finalData = {
           id: 318944,
           accountId: 345778,

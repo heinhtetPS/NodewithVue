@@ -25,42 +25,6 @@ export default {
   background-color: #a2f78d;
 }
 
-.result-text {
-  width: 100%;
-}
 
-.match-history-left {
-  border: 1px solid red;
-  padding: 25px 0px 0px 20px;
-  width: 50%;
-  display: flex;
-}
-
-.champ-image {
-  width: 120px;
-  height: 120px;
-}
-
-.spells-and-runes {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 5px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.spells-and-runes > img {
-  max-width: 50%;
-  max-height: 50%;
-}
-
-.match-history-right {
-  border: 1px solid blue;
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding-left: 20px;
-}
 
 </style>

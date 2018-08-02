@@ -7,17 +7,11 @@ const express = require('express'),
       request = require('request');
       async = require('async');
       extend = require('extend');
-      //missing config for db
-      summonerRoutes = require('./expressRoutes/summonerRoutes.js');
-
-mongoose.Promise = global.Promise;
-//missing mongoose.connect with DB
 
 const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
-app.use('./summoners', summonerRoutes);
 
 app.get('/searchbyname', (req, res) => {
   let data = {};
@@ -83,24 +77,6 @@ app.get('/match', (req, res) => {
       console.log(err);
     }
     res.send(matchData);
-  });
-});
-
-app.get('/vs', (req, res) => {
-  let vsData = [];
-  let api_key = process.env.API_KEY;
-  let URL = 'https://na1.api.riotgames.com/lol/static-data/v3/versions' + '?api_key=' + api_key;
-
-  request(URL, (err, response, body) => {
-    if (!err && response.statusCode === 200) {
-      var json = JSON.parse(body);
-      //assuming that the first element will always be the latest version
-      vsData = json[0];
-
-    } else {
-      console.log(err);
-    }
-    res.send(vsData);
   });
 });
 

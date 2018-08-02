@@ -72,6 +72,7 @@ a {
   width: 100%;
   background-color: black;
   color: white;
+  font-size: 20px;
 }
 
 </style>
