@@ -22,14 +22,11 @@ export default {
     return {
       summonerName: '',
       server: "NA",
-      version: 'ooo',
     }
   },
   methods: {
     handleSubmit: async function() {
       let summonerData = await this.fetchSummoner();
-      // this.version = await this.fetchVersion();
-
 
       if (summonerData) {
         //this message triggers v-if for showing bottom content
@@ -37,8 +34,6 @@ export default {
         //this message passes summonerData to Homepage
         // console.log(summonerData);
         this.$emit("profileData", summonerData);
-        //this message passes version data to Homepage to send to childrens
-        // this.$emit("currentVersion", this.version);
       }
 
     },
@@ -97,15 +92,7 @@ export default {
           }
       }
       return finalData;
-    },
-    // fetchVersion: async function() {
-    //   const staticURL = 'http://localhost:4000/vs'
-    //   let response = await fetch(staticURL);
-    //   //it is because its just a 1 liner that response.json doesn't work and causes error?
-    //   let version = await response.text();
-    //   console.log(version);
-    //   return version;
-    // }
+    }
   }
 }
 </script>

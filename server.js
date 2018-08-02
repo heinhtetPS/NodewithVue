@@ -104,11 +104,6 @@ app.get('/vs', (req, res) => {
   });
 });
 
-// app.get('/searchbyname', (req, res) => {
-//   name = Object.keys(req.query)[0];
-//   res.send(name);
-// });
-
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {

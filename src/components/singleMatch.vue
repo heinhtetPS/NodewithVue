@@ -4,13 +4,13 @@
     <h1 class="result-text"> {{ victoryOrDefeat(this.yourStats.stats) }}</h1>
     <div class="match-history-left">
       <div class="champ-image">
-        <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/8.5.2/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
+        <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/champion/' + convertChampKeytoName(singleMatch.champion) + '.png'"></img>
       </div>
       <div class="mhl-column2">
         <h3>{{ convertQueueID(singleMatch.queue) }}</h3>
         <div class="spells-and-runes">
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/' + convertSSKeytoName(this.yourStats.spell1Id) + '.png'"></img>
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/spell/' + convertSSKeytoName(this.yourStats.spell2Id) + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/spell/' + convertSSKeytoName(this.yourStats.spell1Id) + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/spell/' + convertSSKeytoName(this.yourStats.spell2Id) + '.png'"></img>
         </div>
       </div>
     </div>
@@ -19,22 +19,22 @@
       <h3 class="cs-count">{{ this.yourStats.stats.totalMinionsKilled }} cs</h3>
       <div class="item-blocks">
         <div class="item-block">
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[0] + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + this.yourItems[0] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[1] + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + this.yourItems[1] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[2] + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + this.yourItems[2] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[3] + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + this.yourItems[3] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[4] + '.png'"></img>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + this.yourItems[4] + '.png'"></img>
         </div>
         <div class="item-block">
-          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/' + this.yourItems[5] + '.png'"></image>
+          <img v-bind:src="'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + this.yourItems[5] + '.png'"></image>
         </div>
       </div>
       <div class="below-items">
@@ -43,13 +43,14 @@
         <p class="game-Duration">{{ getGameDuration(this.matchInfo.gameDuration) }}</p>
       </div>
     </div>
+    <p>{{version}}</p>
   </div>
 </template>
 
 <script>
 
 export default {
-  props: ['singleMatch', 'yourname'],
+  props: ['singleMatch', 'yourname', 'version'],
 
   data: function () {
     return {
@@ -326,10 +327,10 @@ export default {
 
       return finalData;
     },
-    doTest: () => {
+    doTest: function() {
       console.log(yourItems);
     },
-    getGameDuration: (seconds) => {
+    getGameDuration: function(seconds) {
       let hours = (seconds / 3600);
       let minutes = Math.round(((seconds / 3600) - Math.floor(hours)) * 60);
 
@@ -339,14 +340,14 @@ export default {
         return "~" + minutes + " minutes";
       }
     },
-    getTheDate: (stamp) => {
+    getTheDate: function(stamp) {
       const date = new Date(stamp);
       let year = date.getFullYear();
       let month = date.getMonth() +1;
       let day = date.getDate();
       return month + "/" + day + "/" + year;
     },
-    getTheHours: (stamp) => {
+    getTheHours: function(stamp) {
       const date = new Date(stamp);
       let hour = date.getHours();
       let mins = date.getMinutes();
@@ -354,7 +355,7 @@ export default {
       mins = mins * 10;
       return hour + ":" + mins;
     },
-    convertQueueID: (id) => {
+    convertQueueID: function(id) {
       switch(id) {
         case 420:
           return "5v5 Ranked Solo";
@@ -366,7 +367,7 @@ export default {
           return "Unknown Queue Type";
       }
     },
-    convertChampKeytoName: (key) => {
+    convertChampKeytoName: function(key) {
         switch(key) {
           case 266: return "Aatrox"; break;
           case 412: return "Thresh"; break;
@@ -507,7 +508,7 @@ export default {
           case 516: return "Ornn"; break;
         }
       },
-    convertSSKeytoName: (key) => {
+    convertSSKeytoName: function(key) {
       switch (key) {
         case 3: return "SummonerExhaust"; break;
         case 4: return "SummonerFlash"; break;
@@ -535,22 +536,16 @@ export default {
     },
     setYourItems: function(yourStats) {
       let items = [];
-
-      items.push(yourStats.item0);
-      items.push(yourStats.item1);
-      items.push(yourStats.item2);
-      items.push(yourStats.item2);
-      items.push(yourStats.item3);
-      items.push(yourStats.item4);
-      items.push(yourStats.item5);
-
+        items.push(yourStats.item0);
+        items.push(yourStats.item1);
+        items.push(yourStats.item2);
+        items.push(yourStats.item2);
+        items.push(yourStats.item3);
+        items.push(yourStats.item4);
+        items.push(yourStats.item5);
       this.yourItems = items;
-      //console.log(this.yourItems); this totally works but doesn't update DOM
-      //why doesn't this update DOM?
-      //BECAUSE OF () =>
     },
     victoryOrDefeat: function(stats) {
-      //not working
       if (stats.win === true) {
         return "VICTORY";
       } else if (stats.win === false) {
@@ -564,7 +559,6 @@ export default {
       let deaths = this.yourStats.stats.deaths;
       let assists = this.yourStats.stats.assists;
       let score = kills + "/" + deaths + "/" + assists;
-      console.log(score);
       return score;
     },
     getKDA: (yourStats) => {
@@ -573,14 +567,9 @@ export default {
       let assists = yourStats.stats.assists;
       if (deaths === 0)
       deaths = 1;
-
-      return (kills + assists) / deaths;
+      let kda = (kills + assists) / deaths;
+      return kda;
     },
-  },
-  computed: {
-    getyourItems: function () {
-      return this.yourItems;
-    }
   }
 }
 </script>
@@ -589,6 +578,10 @@ export default {
 .item-blocks {
   display: flex;
   width: 100%;
+}
+
+.mhl-column2 {
+  margin-left: 10px;
 }
 
 .item-block {

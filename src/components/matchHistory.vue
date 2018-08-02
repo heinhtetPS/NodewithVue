@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="match-history-container">
     <h1>RECENT MATCH HISTORY</h1>
-    <singleMatch v-bind:yourname="yourname" v-bind:singleMatch="match" v-for="match in matches" :key="match.gameId"></singleMatch>
+    <singleMatch v-bind:yourname="yourname" v-bind:singleMatch="match" v-bind:version="version" v-for="match in matches" :key="match.gameId"></singleMatch>
   </div>
 </template>
 
 <script>
 import singleMatch from './singleMatch.vue';
 export default {
-  props: ['matches', 'yourname'],
+  props: ['matches', 'yourname', 'version'],
   components: {
     singleMatch
   }
@@ -44,7 +44,6 @@ export default {
 .spells-and-runes {
   width: 120px;
   height: 120px;
-  margin-left: 10px;
   margin-bottom: 5px;
   display: flex;
   flex-wrap: wrap;

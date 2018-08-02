@@ -1,7 +1,7 @@
 <template>
   <div class="bottom-container">
     <profile class="profilebox" v-bind:data="profile"></profile>
-      <matchHistory class="historybox" v-bind:matches="matches" v-bind:yourname="profile.name"></matchHistory>
+      <matchHistory class="historybox" v-bind:matches="matches" v-bind:yourname="profile.name" v-bind:version="version"></matchHistory>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import matchHistory from './matchHistory.vue';
 import profile from './profile.vue';
 
 export default {
-  props: ['profile', 'matches'],
+  props: ['profile', 'matches', 'version'],
   name: 'bottomContent',
   components: {
     profile,

@@ -8,8 +8,8 @@
         <li>Version: {{ currentVersion }}</li>
       </ul>
     </nav>
-    <mainForm v-on:gotData="toggleDataRetrieved" v-on:profileData="setProfileData" v-on:currentVersion="setCurrentVersion"/>
-    <bottomContent v-if="dataRetrieved" v-bind:profile="profileData" v-bind:matches="matches"></bottomContent>
+    <mainForm v-on:gotData="toggleDataRetrieved" v-on:profileData="setProfileData"/>
+    <bottomContent v-if="dataRetrieved" v-bind:profile="profileData" v-bind:matches="matches" v-bind:version="currentVersion"></bottomContent>
   </div>
 </template>
 
@@ -31,9 +31,9 @@ export default {
       matches: []
     }
   },
-  // created: async function() {
-  //   this.currentVersion = await this.fetchVersion();
-  // },
+  created: function() {
+    this.fetchVersion();
+  },
   methods: {
     toggleDataRetrieved: function () {
       this.dataRetrieved = true;
@@ -42,9 +42,11 @@ export default {
       this.profileData = obj;
       this.matches = obj.matches;
     },
-    setCurrentVersion: function(obj) {
-      console.log(obj);
-      this.currentVersion = obj;
+    fetchVersion: async function() {
+      const staticURL = 'https://ddragon.leagueoflegends.com/api/versions.json'
+      let response = await fetch(staticURL);
+      let version = await response.json();
+      this.currentVersion = version[0];
     }
   }
 }
