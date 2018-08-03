@@ -3,13 +3,14 @@ const express = require('express'),
       path = require('path'),
       bodyParser = require('body-parser'),
       cors = require('cors'),
-      mongoose = require('mongoose');
       request = require('request');
       async = require('async');
       extend = require('extend');
+      serveStatic = require('serve-static');
 
 const app = express();
 app.use(express.static('public'));
+app.use("/", serveStatic (path.join (__dirname, '/dist')) );
 app.use(bodyParser.json());
 app.use(cors());
 
