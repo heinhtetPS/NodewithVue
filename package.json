@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "node build/build.js",
+    "build2": "webpack --mode production",
     "dev": "webpack-dev-server"
   },
   "author": "",
